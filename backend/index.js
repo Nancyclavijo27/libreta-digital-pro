@@ -1,74 +1,28 @@
-import http from "http";
-import { Server } from "socket.io";
-import jwt from "jsonwebtoken";
+// index.js
+import dotenv from "dotenv";
+dotenv.config();
+
 import app from "./src/app.js";
-import TrackPoint from "./src/models/TrackPoint.js";
+import sequelize from "./src/config/db.js";
 
 const PORT = process.env.PORT || 3001;
 
-const server = http.createServer(app);
-
-const allowedOrigins = [
-  "http://localhost:3000",
-  "https://geoapp-nancy-frontend.onrender.com"
-];
-
-const io = new Server(server, {
-  cors: {
-    origin: allowedOrigins,
-    methods: ["GET", "POST"],
-    credentials: true,
-  },
-});
-
-// 🔐 Middleware para validar token del socket
-io.use((socket, next) => {
+(async () => {
   try {
-    const token = socket.handshake.auth.token;
+    // 🔗 Probar conexión a la DB
+    await sequelize.authenticate();
+    console.log("✅ Conexión a la base de datos exitosa");
 
-    if (!token) {
-      return next(new Error("No token"));
-    }
+    // 🔄 Sincronizar modelos (opcional)
+    await sequelize.sync({ alter: true });
+    console.log("📦 Modelos sincronizados con la base de datos");
 
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
-
-    socket.user = decoded; // 👈 guardamos usuario en el socket
-
-    next();
-  } catch (err) {
-    next(new Error("Token inválido"));
+    // 🚀 Levantar servidor Express
+    app.listen(PORT, () => {
+      console.log(`🚀 Backend corriendo en puerto ${PORT}`);
+    });
+    
+  } catch (error) {
+    console.error("❌ No se pudo iniciar el servidor:", error);
   }
-});
-
-// 🔵 Conexión
-io.on("connection", (socket) => {
-  console.log("🟢 Cliente conectado:", socket.id);
-
-  socket.on("location:update", async (data) => {
-    try {
-      if (!data?.lat || !data?.lng) return;
-
-      const savedPoint = await TrackPoint.create({
-        userId: socket.user.id, // 👈 AQUÍ ESTÁ EL CAMBIO IMPORTANTE
-        lat: data.lat,
-        lng: data.lng,
-      });
-
-      io.emit("location:update", {
-        lat: savedPoint.lat,
-        lng: savedPoint.lng,
-      });
-
-    } catch (error) {
-      console.error("❌ Error guardando punto:", error);
-    }
-  });
-
-  socket.on("disconnect", () => {
-    console.log("🔴 Cliente desconectado:", socket.id);
-  });
-});
-
-server.listen(PORT, () => {
-  console.log(`🚀 Backend + Socket.IO corriendo en puerto ${PORT}`);
-});
+})();

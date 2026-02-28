@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import api from "../api/axiosInstance";
-import { socket } from "../api/socket";
 
 import styles from "./Login.module.css";
 
@@ -22,11 +21,7 @@ export default function Login() {
 
       localStorage.setItem("token", data.token);
       localStorage.setItem("user", JSON.stringify(data.user));
-      // 🔥 Enviamos el token al socket
-socket.auth = { token: data.token };
-
-// 🔥 Conectamos el socket
-socket.connect();
+     
 
       data.user.role?.toUpperCase() === "ADMIN"
         ? navigate("/admin")

@@ -1,7 +1,6 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import { logout } from "../utils/auth";
 import Button from "./ui/Button";
-import { socket } from "../api/socket";
 import styles from "./Header.module.css";
 
 export default function Header() {
@@ -11,7 +10,7 @@ export default function Header() {
   const isAdmin = user?.role === "admin";
 
   const handleLogout = () => {
-    socket.disconnect(); // 🔥 Cerramos conexión en tiempo real
+  
     logout();
     navigate("/login", { replace: true });
   };
@@ -21,7 +20,7 @@ export default function Header() {
       <nav className={styles.nav}>
         {/* Logo */}
         <div className={styles.logo}>
-          Trayecta
+          Nueva
         </div>
 
         {/* Menu */}
