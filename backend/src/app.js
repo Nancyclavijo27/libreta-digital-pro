@@ -5,7 +5,6 @@ import cors from "cors";
 import "./models/User.js";
 
 // 🛣️ Rutas
-import userRoutes from "./routes/userRoutes.js";
 import authRoutes from "./routes/authRoutes.js";
 import adminRoutes from "./routes/adminRoutes.js";
 
@@ -32,7 +31,6 @@ app.use(express.json());
 /* ======================
    Rutas
 ====================== */
-app.use("/api/users", userRoutes);
 app.use("/auth", authRoutes);
 app.use("/api", adminRoutes);
 
