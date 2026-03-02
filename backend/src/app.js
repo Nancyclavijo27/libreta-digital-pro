@@ -3,10 +3,15 @@ import cors from "cors";
 
 // 📦 Registro GLOBAL de modelos
 import "./models/User.js";
+import "./models/Negocio.js";
+import "./models/Product.js";
+
 
 // 🛣️ Rutas
 import authRoutes from "./routes/authRoutes.js";
+import productRoutes from "./routes/productRoutes.js";
 import adminRoutes from "./routes/adminRoutes.js";
+
 
 const app = express();
 
@@ -31,7 +36,8 @@ app.use(express.json());
 /* ======================
    Rutas
 ====================== */
-app.use("/auth", authRoutes);
-app.use("/api", adminRoutes);
+app.use("/api/auth", authRoutes);
+app.use("/api/productos", productRoutes);
+app.use("/api/admin", adminRoutes);
 
 export default app;
