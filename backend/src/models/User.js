@@ -40,10 +40,10 @@ const User = sequelize.define("User", {
     allowNull: true,
   },
 
-  estado: {
-    type: DataTypes.BOOLEAN,
-    defaultValue: true,
-  },
+  activo: {
+  type: DataTypes.BOOLEAN,
+  defaultValue: true,
+},
 
 }, {
   timestamps: true,
