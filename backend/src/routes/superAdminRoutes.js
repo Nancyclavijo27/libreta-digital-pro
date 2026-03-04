@@ -8,8 +8,8 @@ import {
   toggleUsuario
 } from "../controllers/superAdminController.js";
 
-import { authMiddleware } from "../middlewares/authMiddleware.js";
-import { authorizeRoles } from "../middlewares/authorizeRoles.js";
+import { authMiddleware } from "../middleware/authMiddleware.js";
+import { authorizeRoles } from "../middleware/roleMiddleware.js";
 
 const router = Router();
 

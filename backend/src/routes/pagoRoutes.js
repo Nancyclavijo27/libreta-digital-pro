@@ -1,9 +1,9 @@
 import { Router } from "express";
 import { registrarPago } from "../controllers/pagoController.js";
 
-import { authMiddleware } from "../middlewares/authMiddleware.js";
-import { authorizeRoles } from "../middlewares/authorizeRoles.js";
-import { injectNegocio } from "../middlewares/injectNegocio.js";
+import { authMiddleware } from "../middleware/authMiddleware.js";
+import { authorizeRoles } from "../middleware/roleMiddleware.js";
+import { injectNegocio } from "../middleware/injectNegocio.js";
 
 const router = Router();
 

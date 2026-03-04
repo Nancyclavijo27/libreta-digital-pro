@@ -2,9 +2,9 @@
 
 import { Router } from "express";
 import { getDashboardDueno } from "../controllers/dashboardController.js";
-import { authMiddleware } from "../middlewares/authMiddleware.js";
-import { injectNegocio } from "../middlewares/injectNegocio.js";
-import { authorizeRoles } from "../middlewares/authorizeRoles.js";
+import { authMiddleware } from "../middleware/authMiddleware.js";
+import { injectNegocio } from "../middleware/injectNegocio.js";
+import { authorizeRoles } from "../middleware/roleMiddleware.js";
 
 const router = Router();
 

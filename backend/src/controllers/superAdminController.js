@@ -7,8 +7,8 @@ import User from "../models/User.js";
 export const getDashboardSuperAdmin = async (req, res) => {
   try {
     const totalNegocios = await Negocio.count();
-    const negociosActivos = await Negocio.count({ where: { activo: true } });
-    const negociosInactivos = await Negocio.count({ where: { activo: false } });
+    const negociosActivos = await Negocio.count({ where: { estado: true  } });
+    const negociosInactivos = await Negocio.count({ where: { estado: false } });
 
     const totalUsuarios = await User.count();
     const totalDuenos = await User.count({ where: { rol: "dueno" } });

@@ -17,7 +17,7 @@ export const login = async (req, res) => {
     const user = await User.findOne({
       where: {
         username,
-        estado: true
+        activo: true
       }
     });
 

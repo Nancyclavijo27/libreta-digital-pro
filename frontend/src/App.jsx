@@ -14,11 +14,12 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+
         {/* 🌐 Públicas */}
         <Route path="/" element={<Landing />} />
         <Route path="/login" element={<Login />} />
 
-        {/* 🔐 Protegidas */}
+        {/* 🔐 Protegidas generales */}
         <Route
           element={
             <ProtectedRoute>
@@ -30,11 +31,11 @@ function App() {
           <Route path="/profile" element={<Profile />} />
         </Route>
 
-        {/* 👑 Admin */}
+        {/* 👑 SUPERADMIN */}
         <Route
-          path="/admin"
+          path="/superadmin"
           element={
-            <ProtectedRoute adminOnly={true}>
+            <ProtectedRoute allowedRoles={["superadmin"]}>
               <AdminDashboard />
             </ProtectedRoute>
           }

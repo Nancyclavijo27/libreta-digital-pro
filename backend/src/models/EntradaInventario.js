@@ -1,7 +1,7 @@
 // models/EntradaInventario.js
 import { DataTypes } from "sequelize";
 import sequelize from "../config/db.js";
-import Producto from "./Producto.js";
+import Producto from "./Product.js";
 import User from "./User.js";
 import Negocio from "./Negocio.js";
 
