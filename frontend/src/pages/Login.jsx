@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../api/axiosInstance";
-
+import { AuthContext } from "../context/AuthContext";
 
 export default function Login() {
+
   const navigate = useNavigate();
+  const { login } = useContext(AuthContext);
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -14,15 +16,16 @@ export default function Login() {
     e.preventDefault();
 
     try {
+
       const { data } = await api.post("/auth/login", {
         username,
         password
       });
 
-      localStorage.setItem("token", data.token);
-      localStorage.setItem("user", JSON.stringify(data.user));
+      // 🔐 guardar en context
+      login(data.user, data.token);
 
-      // Redirección por rol
+      // 👑 redirección por rol
       if (data.user.rol === "superadmin") {
         navigate("/superadmin");
       } else {
@@ -36,6 +39,7 @@ export default function Login() {
 
   return (
     <form onSubmit={handleSubmit}>
+
       {error && <p>{error}</p>}
 
       <input
@@ -53,6 +57,7 @@ export default function Login() {
       />
 
       <button type="submit">Entrar</button>
+
     </form>
   );
 }
