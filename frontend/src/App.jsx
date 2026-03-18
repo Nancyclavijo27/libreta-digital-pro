@@ -2,13 +2,18 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import Landing from "./pages/Landing";
 import Login from "./pages/Login";
-
 import Home from "./pages/Home";
 import Profile from "./pages/UserProfile";
-import AdminDashboard from "./pages/AdminDashboard";
+
+import AdminDashboard from "./pages/superadmin/AdminDashboard";
+import CreateBusiness from "./pages/superadmin/CreateBusiness";
+import Businesses from "./pages/superadmin/Businesses";
+import CreateUser from "./pages/superadmin/CreateUser";
+import Users from "./pages/superadmin/Users";
 
 import ProtectedRoute from "./components/ProtectedRoute";
 import PrivateLayout from "./layouts/PrivateLayout";
+import SuperAdminLayout from "./layouts/SuperAdminLayout"; // <-- nuevo layout
 
 function App() {
   return (
@@ -33,15 +38,21 @@ function App() {
 
         {/* 👑 SUPERADMIN */}
         <Route
-          path="/superadmin"
           element={
             <ProtectedRoute allowedRoles={["superadmin"]}>
-              <AdminDashboard />
+              <SuperAdminLayout /> {/* <-- aquí usamos el layout exclusivo */}
             </ProtectedRoute>
           }
-        />
+        >
+          <Route path="/superadmin/dashboard" element={<AdminDashboard />} />
+          <Route path="/superadmin/create-business" element={<CreateBusiness />} />
+          <Route path="/superadmin/businesses" element={<Businesses />} />
+          <Route path="/superadmin/create-user" element={<CreateUser />} />
+          <Route path="/superadmin/users" element={<Users />} />
+        </Route>
 
         <Route path="*" element={<Navigate to="/" replace />} />
+
       </Routes>
     </BrowserRouter>
   );

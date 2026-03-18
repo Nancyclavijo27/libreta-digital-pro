@@ -1,11 +1,13 @@
 import { Router } from "express";
+
 import {
   getDashboardSuperAdmin,
   getNegocios,
   createNegocio,
   toggleNegocio,
   getUsuariosByNegocio,
-  toggleUsuario
+  toggleUsuario,
+  createUsuario
 } from "../controllers/superAdminController.js";
 
 import { authMiddleware } from "../middleware/authMiddleware.js";
@@ -23,6 +25,8 @@ router.post("/negocios", createNegocio);
 router.patch("/negocios/:id/toggle", toggleNegocio);
 
 router.get("/negocios/:id/usuarios", getUsuariosByNegocio);
+
+router.post("/usuarios", createUsuario);
 router.patch("/usuarios/:id/toggle", toggleUsuario);
 
 export default router;

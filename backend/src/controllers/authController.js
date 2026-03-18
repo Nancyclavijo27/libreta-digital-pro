@@ -15,11 +15,11 @@ export const login = async (req, res) => {
 
     // 2️⃣ Buscar usuario activo
     const user = await User.findOne({
-      where: {
-        username,
-        activo: true
-      }
-    });
+  where: {
+    username: username.toLowerCase(),
+    activo: true
+  }
+});
 
     if (!user) {
       return res.status(400).json({

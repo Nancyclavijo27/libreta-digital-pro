@@ -1,0 +1,93 @@
+.container {
+  padding: 10px;
+}
+
+/* TITULO */
+
+.container h1 {
+  margin-bottom: 25px;
+  color: #111827;
+}
+
+/* TARJETAS */
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+
+  transition: 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+}
+
+.card h3 {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 8px;
+}
+
+.card p {
+  font-size: 28px;
+  font-weight: bold;
+  color: #111827;
+}
+
+/* BOTONES */
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+
+.actions button {
+  background: #07a7b5;
+  border: none;
+  color: white;
+
+  padding: 10px 16px;
+  border-radius: 8px;
+
+  font-size: 14px;
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.actions button:hover {
+  background: #1d4ed8;
+  transform: translateY(-2px);
+}
+
+/* ALERTAS */
+
+.alerts {
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+  padding: 18px;
+  border-radius: 10px;
+}
+
+.alerts h2 {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.alerts li {
+  color: #92400e;
+}

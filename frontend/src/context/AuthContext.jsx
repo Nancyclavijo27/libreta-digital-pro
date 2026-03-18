@@ -19,12 +19,18 @@ export default function AuthProvider({ children }) {
   const login = (userData, tokenData) => {
     setUser(userData);
     setToken(tokenData);
+
+    // 💾 sincronizar con localStorage inmediatamente
+    localStorage.setItem("user", JSON.stringify(userData));
+    localStorage.setItem("token", tokenData);
   };
 
   // 🚪 logout
   const logout = () => {
     setUser(null);
     setToken(null);
+    localStorage.removeItem("user");
+    localStorage.removeItem("token");
   };
 
   // 💾 sincronizar con localStorage automáticamente

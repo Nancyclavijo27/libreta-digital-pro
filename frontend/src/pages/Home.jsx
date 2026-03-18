@@ -1,26 +1,17 @@
-
-import styles from "./Home.module.css";
-
-export default function Home() {
+function Home() {
   return (
-    <main className={styles.page}>
-      <section className={styles.dashboard}>
-        
-       
+    <div>
 
-      {/* PANEL */}
-        <aside className={styles.panel}>
-          <div className={styles.card}>
-            <h4>📍 Distancia total</h4>
-            <p>565 km</p>
-          </div>
+      <h1>Panel principal</h1>
 
-          <div className={styles.card}>
-            <h4>⏱ Tiempo total</h4>
-            <p>12.655 min</p>
-          </div>
-        </aside>
-      </section>
-    </main>
+      <button>Registrar Venta</button>
+      <button>Registrar Entrada</button>
+
+      <button>Ver Deudas</button>
+      <button>Inventario</button>
+
+    </div>
   );
 }
+
+export default Home;

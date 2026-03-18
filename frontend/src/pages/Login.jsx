@@ -27,7 +27,7 @@ export default function Login() {
 
       // 👑 redirección por rol
       if (data.user.rol === "superadmin") {
-        navigate("/superadmin");
+        navigate("/superadmin/dashboard");
       } else {
         navigate("/home");
       }
