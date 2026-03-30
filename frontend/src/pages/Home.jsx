@@ -1,17 +1,27 @@
-function Home() {
+import AccionesRapidas from "../components/home/AccionesRapidas";
+import ResumenRapido from "../components/home/ResumenRapido";
+import { useDashboard } from "../hooks/useDashboard";
+
+const Home = () => {
+  const { data, loading, error } = useDashboard();
+
+  if (loading) return <p>Cargando...</p>;
+  if (error) return <p>Error cargando dashboard</p>;
+
   return (
     <div>
+      
 
-      <h1>Panel principal</h1>
+      {/* ACCIONES */}
+      <AccionesRapidas />
 
-      <button>Registrar Venta</button>
-      <button>Registrar Entrada</button>
-
-      <button>Ver Deudas</button>
-      <button>Inventario</button>
-
+      {/* RESUMEN */}
+      <ResumenRapido
+        totalInventario={data.totalInventario}
+        totalPendiente={data.totalPendiente}
+      />
     </div>
   );
-}
+};
 
 export default Home;
