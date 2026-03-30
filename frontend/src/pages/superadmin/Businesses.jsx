@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getNegocios } from "../../api/superAdminApi";
+import { getNegocios, toggleNegocio } from "../../api/superAdminApi";
 import styles from "./Businesses.module.css";
 
 export default function Businesses() {
@@ -7,24 +7,28 @@ export default function Businesses() {
   const [businesses, setBusinesses] = useState([]);
 
   useEffect(() => {
-
-    const loadBusinesses = async () => {
-
-      try {
-        const data = await getNegocios();
-        setBusinesses(data);
-      } catch (error) {
-        console.error(error);
-      }
-
-    };
-
     loadBusinesses();
-
   }, []);
 
-  return (
+  const loadBusinesses = async () => {
+    try {
+      const data = await getNegocios();
+      setBusinesses(data);
+    } catch (error) {
+      console.error("Error cargando negocios:", error);
+    }
+  };
 
+  const handleToggle = async (id) => {
+    try {
+      await toggleNegocio(id);
+      await loadBusinesses(); // refresca lista
+    } catch (error) {
+      console.error("Error cambiando estado:", error);
+    }
+  };
+
+  return (
     <div className={styles.container}>
 
       <h1 className={styles.title}>Negocios</h1>
@@ -36,6 +40,7 @@ export default function Businesses() {
             <th>Nombre</th>
             <th>Dirección</th>
             <th>Estado</th>
+            <th>Acciones</th>
           </tr>
         </thead>
 
@@ -51,6 +56,15 @@ export default function Businesses() {
                 {b.estado ? "Activo" : "Suspendido"}
               </td>
 
+              <td>
+                <button
+                  onClick={() => handleToggle(b.id)}
+                  className={b.estado ? styles.btnDesactivar : styles.btnActivar}
+                >
+                  {b.estado ? "Desactivar" : "Activar"}
+                </button>
+              </td>
+
             </tr>
 
           ))}
@@ -60,6 +74,5 @@ export default function Businesses() {
       </table>
 
     </div>
-
   );
 }

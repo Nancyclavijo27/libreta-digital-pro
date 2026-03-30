@@ -1,6 +1,7 @@
 import User from "../models/User.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
+import Negocio from "../models/Negocio.js";
 
 export const login = async (req, res) => {
   const { username, password } = req.body;
@@ -18,6 +19,10 @@ export const login = async (req, res) => {
   where: {
     username: username.toLowerCase(),
     activo: true
+  },
+  include: {
+    model: Negocio,
+    attributes: ["id", "nombre"]
   }
 });
 
@@ -41,7 +46,8 @@ export const login = async (req, res) => {
       {
         id: user.id,
         rol: user.rol,
-        negocio_id: user.negocio_id
+        negocio_id: user.negocio_id,
+        negocio: user.Negocio // 👈 AQUÍ ESTÁ LA CLAVE
       },
       process.env.JWT_SECRET,
       { expiresIn: "1d" }
@@ -55,7 +61,8 @@ export const login = async (req, res) => {
         id: user.id,
         nombre: user.nombre,
         rol: user.rol,
-        negocio_id: user.negocio_id
+        negocio_id: user.negocio_id,
+        negocio: user.Negocio // 👈 ESTA LÍNEA ES LA CLAVE
       }
     });
 

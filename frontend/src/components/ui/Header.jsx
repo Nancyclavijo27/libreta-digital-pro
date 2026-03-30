@@ -6,6 +6,7 @@ export default function Header() {
   const navigate = useNavigate();
 
   const user = JSON.parse(localStorage.getItem("user"));
+ 
 
   const handleLogout = () => {
     logout();
@@ -17,12 +18,11 @@ export default function Header() {
 
       <div className={styles.info}>
         <h3 className={styles.business}>
-          {user?.businessName || "Mi negocio"}
-        </h3>
-
-        <span className={styles.user}>
-          Hola {user?.name}
-        </span>
+  {user?.negocio?.nombre || "Mi negocio"}
+</h3>
+<span className={styles.user}>
+  Hola {user?.nombre || ""}
+</span>
       </div>
 
       <button

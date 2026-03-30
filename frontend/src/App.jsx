@@ -4,6 +4,9 @@ import Landing from "./pages/Landing";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
 import Profile from "./pages/UserProfile";
+import Ventas from "./pages/Ventas";
+import Deudas from "./pages/Deudas";
+import Inventario from "./pages/Inventario";
 
 import AdminDashboard from "./pages/superadmin/AdminDashboard";
 import CreateBusiness from "./pages/superadmin/CreateBusiness";
@@ -34,7 +37,10 @@ function App() {
         >
           <Route path="/home" element={<Home />} />
           <Route path="/profile" element={<Profile />} />
-        </Route>
+          <Route path="/ventas" element={<Ventas />} />
+          <Route path="/deudas" element={<Deudas />} />
+          <Route path="/inventario" element={<Inventario />} />
+          </Route>
 
         {/* 👑 SUPERADMIN */}
         <Route

@@ -29,3 +29,60 @@
 .table tr:hover {
   background: #f9fafb;
 }
+
+.container {
+  padding: 20px;
+}
+
+.title {
+  margin-bottom: 20px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th, .table td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+/* Estados */
+.activo {
+  color: green;
+  font-weight: bold;
+}
+
+.inactivo {
+  color: red;
+  font-weight: bold;
+}
+
+/* Botones */
+.btnActivar {
+  background-color: #22c55e; /* verde */
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btnActivar:hover {
+  background-color: #16a34a;
+}
+
+.btnDesactivar {
+  background-color: #ef4444; /* rojo */
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btnDesactivar:hover {
+  background-color: #dc2626;
+}

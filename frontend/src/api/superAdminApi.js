@@ -27,3 +27,8 @@ export const toggleUsuario = async (id) => {
   const res = await api.patch(`/superadmin/usuarios/${id}/toggle`);
   return res.data;
 };
+
+export const toggleNegocio = async (id) => {
+  const res = await api.patch(`/superadmin/negocios/${id}/toggle`);
+  return res.data;
+};
