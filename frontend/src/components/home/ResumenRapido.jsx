@@ -5,6 +5,7 @@ const ResumenRapido = ({ totalInventario, totalPendiente }) => {
 
       <p>Inventario total: {totalInventario}</p>
       <p>Total pendiente: ${totalPendiente}</p>
+      
     </div>
   );
 };

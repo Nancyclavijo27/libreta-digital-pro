@@ -5,7 +5,7 @@ const AccionesRapidas = () => {
 
   return (
     <div>
-      <button onClick={() => navigate("/venta")}>
+      <button onClick={() => navigate("/ventas")}>
         Registrar Venta
       </button>
 
@@ -19,6 +19,16 @@ const AccionesRapidas = () => {
 
       <button onClick={() => navigate("/inventario")}>
         Inventario
+      </button>
+
+      <button onClick={() => navigate("/crear-producto")}>
+          Crear Producto
+      </button>
+      <button onClick={() => navigate("/productos")}>
+          Productos
+      </button>
+      <button onClick={() => navigate("/ventas-historial")}>
+        Ver Ventas
       </button>
     </div>
   );

@@ -1,10 +1,11 @@
-// controllers/ventaController.js
-
 import Venta from "../models/Venta.js";
 import DetalleVenta from "../models/DetalleVenta.js";
 import Product from "../models/Product.js";
 import Cliente from "../models/Cliente.js";
 
+/* =========================
+   CREAR VENTA
+========================= */
 export const createVenta = async (req, res) => {
   try {
     const { productos, tipo_pago, cliente_id } = req.body;
@@ -17,14 +18,13 @@ export const createVenta = async (req, res) => {
 
     if (!tipo_pago) {
       return res.status(400).json({
-        message: "Debe indicar tipo_pago (contado o credito)",
+        message: "Debe indicar tipo_pago",
       });
     }
 
-    // 🔥 VALIDACIÓN OBLIGATORIA
     if (tipo_pago === "credito" && !cliente_id) {
       return res.status(400).json({
-        message: "Debe seleccionar cliente para venta a crédito",
+        message: "Debe seleccionar cliente",
       });
     }
 
@@ -61,9 +61,7 @@ export const createVenta = async (req, res) => {
         });
       }
 
-      const subtotal =
-        parseFloat(cantidad) * parseFloat(precio_unitario);
-
+      const subtotal = cantidad * precio_unitario;
       totalVenta += subtotal;
 
       await DetalleVenta.create({
@@ -74,16 +72,13 @@ export const createVenta = async (req, res) => {
         subtotal,
       });
 
-      producto.stock =
-        parseFloat(producto.stock) - parseFloat(cantidad);
-
+      producto.stock -= cantidad;
       await producto.save();
     }
 
     nuevaVenta.total = totalVenta;
     await nuevaVenta.save();
 
-    // 🔥 SUMAR DEUDA CLIENTE
     if (tipo_pago === "credito") {
       const cliente = await Cliente.findOne({
         where: {
@@ -93,23 +88,46 @@ export const createVenta = async (req, res) => {
       });
 
       if (cliente) {
-        cliente.saldo_deuda =
-          parseFloat(cliente.saldo_deuda) + totalVenta;
-
+        cliente.saldo_deuda += totalVenta;
         await cliente.save();
       }
     }
 
     return res.status(201).json({
-      message: "Venta registrada correctamente",
-      venta_id: nuevaVenta.id,
+      message: "Venta registrada",
       total: totalVenta,
     });
 
   } catch (error) {
-    console.error("Error creando venta:", error);
-    return res.status(500).json({
-      message: "Error del servidor",
+    console.error(error);
+    res.status(500).json({ message: "Error servidor" });
+  }
+};
+
+
+/* =========================
+   LISTAR VENTAS
+========================= */
+export const getVentas = async (req, res) => {
+  try {
+    const ventas = await Venta.findAll({
+      where: { negocio_id: req.negocio_id },
+      include: [
+        {
+          model: DetalleVenta,
+          include: [Product],
+        },
+        {
+          model: Cliente,
+        },
+      ],
+      order: [["createdAt", "DESC"]],
     });
+
+    res.json(ventas);
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error" });
   }
 };

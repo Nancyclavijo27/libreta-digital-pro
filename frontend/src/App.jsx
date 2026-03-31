@@ -7,6 +7,9 @@ import Profile from "./pages/UserProfile";
 import Ventas from "./pages/Ventas";
 import Deudas from "./pages/Deudas";
 import Inventario from "./pages/Inventario";
+import Productos from "./pages/Productos";
+import CrearProducto from "./pages/CrearProducto";
+import VentasHistorial from "./pages/VentasHistorial";
 
 import AdminDashboard from "./pages/superadmin/AdminDashboard";
 import CreateBusiness from "./pages/superadmin/CreateBusiness";
@@ -40,6 +43,9 @@ function App() {
           <Route path="/ventas" element={<Ventas />} />
           <Route path="/deudas" element={<Deudas />} />
           <Route path="/inventario" element={<Inventario />} />
+          <Route path="/productos" element={<Productos />} />
+          <Route path="/crear-producto" element={<CrearProducto />} />
+          <Route path="/ventas-historial" element={<VentasHistorial />} />
           </Route>
 
         {/* 👑 SUPERADMIN */}
