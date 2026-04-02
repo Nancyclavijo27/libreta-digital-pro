@@ -10,6 +10,8 @@ import Inventario from "./pages/Inventario";
 import Productos from "./pages/Productos";
 import CrearProducto from "./pages/CrearProducto";
 import VentasHistorial from "./pages/VentasHistorial";
+import RegistrarEntrada from "./pages/RegistrarEntrada";
+import DetalleProducto from "./pages/DetalleProducto";
 
 import AdminDashboard from "./pages/superadmin/AdminDashboard";
 import CreateBusiness from "./pages/superadmin/CreateBusiness";
@@ -46,6 +48,8 @@ function App() {
           <Route path="/productos" element={<Productos />} />
           <Route path="/crear-producto" element={<CrearProducto />} />
           <Route path="/ventas-historial" element={<VentasHistorial />} />
+          <Route path="/entrada" element={<RegistrarEntrada />} />
+          <Route path="/producto/:id" element={<DetalleProducto />} />
           </Route>
 
         {/* 👑 SUPERADMIN */}

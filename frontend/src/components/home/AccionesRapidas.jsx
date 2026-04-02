@@ -30,6 +30,9 @@ const AccionesRapidas = () => {
       <button onClick={() => navigate("/ventas-historial")}>
         Ver Ventas
       </button>
+      <button onClick={() => navigate("/entrada")}>
+        Registrar Entrada
+      </button>
     </div>
   );
 };
