@@ -27,25 +27,27 @@ export const useVentas = () => {
     fetchProductos();
   }, []);
 
-  // 🔥 AQUÍ ESTÁ LA CLAVE
+  // 🔹 seleccionar producto
   const seleccionarProducto = (producto) => {
     if (!producto) return;
 
     setProductoSeleccionado(producto);
-
-    // 👇 ESTE ES EL PRECIO BASE
     setPrecio(Number(producto.precio_base) || 0);
-
-    // 👇 reset cantidad
     setCantidad(1);
   };
 
   const total = cantidad * precio;
 
-  // 🔹 Crear venta
+  // 🔥 CREAR VENTA
   const crearVenta = async () => {
     if (!productoSeleccionado) {
       alert("Seleccione un producto");
+      return false;
+    }
+
+    // 🔥 VALIDACIÓN CLAVE (AQUÍ VA)
+    if (tipoPago === "credito" && !clienteId) {
+      alert("⚠️ Selecciona un cliente antes de continuar");
       return false;
     }
 
@@ -72,6 +74,7 @@ export const useVentas = () => {
       setProductoSeleccionado(null);
       setCantidad(1);
       setPrecio(0);
+      setClienteId(null);
 
       return true;
 

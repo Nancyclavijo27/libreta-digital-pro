@@ -42,6 +42,12 @@ const Ventas = () => {
 
       <h2>Registrar Venta</h2>
 
+      
+      <button onClick={() => navigate("/ventas-historial")}>
+        Ver Ventas
+      </button>
+
+
       {/* 👇 PRODUCTO */}
       <SelectorProducto
         productos={productos}

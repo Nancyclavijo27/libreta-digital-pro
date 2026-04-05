@@ -1,3 +1,7 @@
 export const formatearMoneda = (valor) => {
-  return new Intl.NumberFormat("es-CO").format(valor);
+  return new Intl.NumberFormat("es-CO", {
+    style: "currency",
+    currency: "COP",
+    minimumFractionDigits: 0,
+  }).format(valor);
 };

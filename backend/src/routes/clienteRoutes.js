@@ -1,6 +1,7 @@
 import { Router } from "express";
 import {
   createCliente,
+  getClientes,
   getClientesConDeuda,
   getClienteById,
   deactivateCliente
@@ -16,7 +17,7 @@ const router = Router();
    CLIENTES
 ========================= */
 
-// Crear cliente (solo dueño)
+// 🔹 Crear cliente (solo dueño)
 router.post(
   "/",
   authMiddleware,
@@ -25,7 +26,16 @@ router.post(
   createCliente
 );
 
-// Listar clientes con deuda
+// 🔹 Listar TODOS los clientes (🔥 CLAVE PARA VENTAS)
+router.get(
+  "/",
+  authMiddleware,
+  injectNegocio,
+  authorizeRoles("dueno", "empleado"),
+  getClientes
+);
+
+// 🔹 Listar clientes con deuda
 router.get(
   "/deudas",
   authMiddleware,
@@ -34,7 +44,7 @@ router.get(
   getClientesConDeuda
 );
 
-// Detalle cliente
+// 🔹 Detalle cliente
 router.get(
   "/:id",
   authMiddleware,
@@ -43,7 +53,7 @@ router.get(
   getClienteById
 );
 
-// Desactivar cliente
+// 🔹 Desactivar cliente
 router.patch(
   "/:id/deactivate",
   authMiddleware,

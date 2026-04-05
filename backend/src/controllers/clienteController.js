@@ -1,5 +1,3 @@
-// controllers/clienteController.js
-
 import Cliente from "../models/Cliente.js";
 import Venta from "../models/Venta.js";
 import Pago from "../models/Pago.js";
@@ -31,6 +29,7 @@ export const createCliente = async (req, res) => {
   }
 };
 
+
 /* =========================
    Listar TODOS los clientes
 ========================= */
@@ -52,21 +51,57 @@ export const getClientes = async (req, res) => {
   }
 };
 
+
 /* =========================
-   Listar Clientes con deuda
+   Listar Clientes con deuda (REAL)
 ========================= */
 export const getClientesConDeuda = async (req, res) => {
   try {
     const clientes = await Cliente.findAll({
       where: {
         negocio_id: req.negocio_id,
-        saldo_deuda: { [Op.gt]: 0 },
         activo: true,
       },
-      order: [["saldo_deuda", "DESC"]],
+      include: [
+        {
+          model: Venta,
+          where: { tipo_pago: "credito" },
+          required: false,
+          include: [Pago],
+        },
+      ],
     });
 
-    res.json(clientes);
+    // 🔥 CALCULAR DEUDA REAL
+    const clientesConDeuda = clientes.map((cliente) => {
+      let totalPendiente = 0;
+
+      cliente.Venta?.forEach((venta) => {
+        const total = parseFloat(venta.total);
+
+        const pagado = venta.Pagos?.reduce(
+          (acc, pago) => acc + parseFloat(pago.monto),
+          0
+        ) || 0;
+
+        const saldo = total - pagado;
+
+        if (saldo > 0) {
+          totalPendiente += saldo;
+        }
+      });
+
+      return {
+        id: cliente.id,
+        nombre: cliente.nombre,
+        saldo_deuda: totalPendiente,
+      };
+    });
+
+    // 🔥 SOLO LOS QUE DEBEN
+    const resultado = clientesConDeuda.filter(c => c.saldo_deuda > 0);
+
+    res.json(resultado);
 
   } catch (error) {
     console.error("Error getClientesConDeuda:", error);
@@ -74,8 +109,9 @@ export const getClientesConDeuda = async (req, res) => {
   }
 };
 
+
 /* =========================
-   Detalle Cliente
+   Detalle Cliente (CORRECTO)
 ========================= */
 export const getClienteById = async (req, res) => {
   try {
@@ -87,12 +123,9 @@ export const getClienteById = async (req, res) => {
       include: [
         {
           model: Venta,
+          include: [Pago],
           order: [["createdAt", "DESC"]],
         },
-        {
-          model: Pago,
-          order: [["createdAt", "DESC"]],
-        }
       ],
     });
 
@@ -100,13 +133,43 @@ export const getClienteById = async (req, res) => {
       return res.status(404).json({ message: "Cliente no encontrado" });
     }
 
-    res.json(cliente);
+    // 🔥 CALCULAR TODO AQUÍ
+    let totalPendiente = 0;
+
+    const ventasProcesadas = cliente.Venta.map((venta) => {
+      const total = parseFloat(venta.total);
+
+      const pagado = venta.Pagos?.reduce(
+        (acc, pago) => acc + parseFloat(pago.monto),
+        0
+      ) || 0;
+
+      const saldo = total - pagado;
+
+      if (saldo > 0) {
+        totalPendiente += saldo;
+      }
+
+      return {
+        ...venta.toJSON(),
+        total,
+        pagado,
+        saldo,
+      };
+    });
+
+    res.json({
+      ...cliente.toJSON(),
+      saldo_deuda: totalPendiente, // 🔥 REAL
+      Venta: ventasProcesadas,
+    });
 
   } catch (error) {
     console.error("Error getClienteById:", error);
     res.status(500).json({ message: "Error interno del servidor" });
   }
 };
+
 
 /* =========================
    Actualizar Cliente
@@ -139,6 +202,7 @@ export const updateCliente = async (req, res) => {
     res.status(500).json({ message: "Error interno del servidor" });
   }
 };
+
 
 /* =========================
    Desactivar Cliente

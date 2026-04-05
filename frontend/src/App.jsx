@@ -7,11 +7,14 @@ import Profile from "./pages/UserProfile";
 import Ventas from "./pages/Ventas";
 import Deudas from "./pages/Deudas";
 import Inventario from "./pages/Inventario";
-import Productos from "./pages/Productos";
 import CrearProducto from "./pages/CrearProducto";
 import VentasHistorial from "./pages/VentasHistorial";
 import RegistrarEntrada from "./pages/RegistrarEntrada";
 import DetalleProducto from "./pages/DetalleProducto";
+import ClienteDeuda from "./pages/ClienteDeuda";
+import RegistrarPago from "./pages/RegistrarPago";
+import Clientes from "./pages/Clientes";
+import CrearCliente from "./pages/CrearCliente";
 
 import AdminDashboard from "./pages/superadmin/AdminDashboard";
 import CreateBusiness from "./pages/superadmin/CreateBusiness";
@@ -43,13 +46,16 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/ventas" element={<Ventas />} />
-          <Route path="/deudas" element={<Deudas />} />
           <Route path="/inventario" element={<Inventario />} />
-          <Route path="/productos" element={<Productos />} />
           <Route path="/crear-producto" element={<CrearProducto />} />
           <Route path="/ventas-historial" element={<VentasHistorial />} />
           <Route path="/entrada" element={<RegistrarEntrada />} />
           <Route path="/producto/:id" element={<DetalleProducto />} />
+          <Route path="/deudas" element={<Deudas />} />
+          <Route path="/cliente/:id" element={<ClienteDeuda />} />
+          <Route path="/registrar-pago/:id" element={<RegistrarPago />} />
+          <Route path="/clientes" element={<Clientes />} />
+          <Route path="/crear-cliente" element={<CrearCliente />} />
           </Route>
 
         {/* 👑 SUPERADMIN */}

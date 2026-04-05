@@ -1,4 +1,8 @@
+import { useClientes } from "../../hooks/useClientes";
+
 const TipoPago = ({ tipoPago, setTipoPago, setClienteId }) => {
+  const { clientes } = useClientes();
+
   return (
     <div>
       <p>Tipo de pago</p>
@@ -23,11 +27,23 @@ const TipoPago = ({ tipoPago, setTipoPago, setClienteId }) => {
         Crédito
       </label>
 
+      {/* 🔥 SOLO SI ES CRÉDITO */}
       {tipoPago === "credito" && (
-        <input
-          placeholder="ID Cliente"
-          onChange={(e) => setClienteId(e.target.value)}
-        />
+        <div style={{ marginTop: "10px" }}>
+          <p>Seleccionar cliente</p>
+
+          <select
+            onChange={(e) => setClienteId(Number(e.target.value))}
+          >
+            <option value="">Seleccione cliente</option>
+
+            {clientes.map((c) => (
+              <option key={c.id} value={c.id}>
+                {c.nombre}
+              </option>
+            ))}
+          </select>
+        </div>
       )}
     </div>
   );

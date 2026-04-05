@@ -10,6 +10,7 @@ export const createVenta = async (req, res) => {
   try {
     const { productos, tipo_pago, cliente_id } = req.body;
 
+    // 🔹 Validaciones
     if (!productos || productos.length === 0) {
       return res.status(400).json({
         message: "Debe enviar al menos un producto",
@@ -28,12 +29,14 @@ export const createVenta = async (req, res) => {
       });
     }
 
-    const fechaActual = new Date();
-    const fecha = fechaActual.toISOString().split("T")[0];
-    const hora = fechaActual.toTimeString().split(" ")[0];
+    // 🔹 Fecha y hora
+    const ahora = new Date();
+    const fecha = ahora.toISOString().split("T")[0];
+    const hora = ahora.toTimeString().split(" ")[0];
 
     let totalVenta = 0;
 
+    // 🔹 Crear venta base
     const nuevaVenta = await Venta.create({
       fecha,
       hora,
@@ -45,6 +48,7 @@ export const createVenta = async (req, res) => {
       cliente_id: tipo_pago === "credito" ? cliente_id : null,
     });
 
+    // 🔥 Procesar productos
     for (const item of productos) {
       const { producto_id, cantidad, precio_unitario } = item;
 
@@ -61,24 +65,36 @@ export const createVenta = async (req, res) => {
         });
       }
 
-      const subtotal = cantidad * precio_unitario;
+      // 🔴 VALIDACIÓN DE STOCK
+      if (producto.stock < cantidad) {
+        return res.status(400).json({
+          message: `Stock insuficiente para ${producto.nombre}`,
+        });
+      }
+
+      const subtotal =
+        Number(cantidad) * Number(precio_unitario);
+
       totalVenta += subtotal;
 
       await DetalleVenta.create({
         venta_id: nuevaVenta.id,
         producto_id,
-        cantidad,
-        precio_unitario,
+        cantidad: Number(cantidad),
+        precio_unitario: Number(precio_unitario),
         subtotal,
       });
 
-      producto.stock -= cantidad;
+      // 🔥 Descontar stock
+      producto.stock -= Number(cantidad);
       await producto.save();
     }
 
+    // 🔹 Actualizar total
     nuevaVenta.total = totalVenta;
     await nuevaVenta.save();
 
+    // 🔥 SUMAR DEUDA AL CLIENTE (CLAVE)
     if (tipo_pago === "credito") {
       const cliente = await Cliente.findOne({
         where: {
@@ -88,7 +104,11 @@ export const createVenta = async (req, res) => {
       });
 
       if (cliente) {
-        cliente.saldo_deuda += totalVenta;
+        const saldoActual = Number(cliente.saldo_deuda || 0);
+        const nuevoSaldo = saldoActual + totalVenta;
+
+        cliente.saldo_deuda = nuevoSaldo;
+
         await cliente.save();
       }
     }
@@ -99,7 +119,7 @@ export const createVenta = async (req, res) => {
     });
 
   } catch (error) {
-    console.error(error);
+    console.error("🔥 Error createVenta:", error);
     res.status(500).json({ message: "Error servidor" });
   }
 };
@@ -127,7 +147,7 @@ export const getVentas = async (req, res) => {
     res.json(ventas);
 
   } catch (error) {
-    console.error(error);
+    console.error("🔥 Error getVentas:", error);
     res.status(500).json({ message: "Error" });
   }
 };

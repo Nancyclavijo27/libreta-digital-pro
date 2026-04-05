@@ -17,13 +17,25 @@ const Inventario = () => {
   if (loading) return <p>Cargando...</p>;
 
   return (
-    <div>
+    <div style={{ padding: "20px" }}>
+
       {/* 🔙 volver */}
       <button onClick={() => navigate("/home")}>
         ← Volver
       </button>
 
-      <h2>Inventario</h2>
+      <h2>📦 Inventario</h2>
+
+      {/* 🔹 ACCIONES PRINCIPALES */}
+      <div style={{ marginBottom: "20px" }}>
+        <button onClick={() => navigate("/crear-producto")}>
+          + Crear Producto
+        </button>
+
+        <button onClick={() => navigate("/entrada")}>
+          + Registrar Entrada
+        </button>
+      </div>
 
       {/* 🔍 buscador */}
       <BuscadorProducto
@@ -34,16 +46,6 @@ const Inventario = () => {
       {/* 📦 lista */}
       <ListaInventario productos={productos} />
 
-      {/* ➕ acciones */}
-      <div style={{ marginTop: "20px" }}>
-        <button onClick={() => navigate("/crear-producto")}>
-          + Crear Producto
-        </button>
-
-        <button onClick={() => navigate("/entrada")}>
-          + Registrar Entrada
-        </button>
-      </div>
     </div>
   );
 };
