@@ -19,8 +19,11 @@
 /* contenido */
 .main {
   flex: 1;
-  overflow-y: auto;
-  padding: 15px;
+  padding: 10px;
+  background: #f3f4f6;
+
+  display: flex;
+  flex-direction: column;
 }
 
 /* bottom nav fijo */

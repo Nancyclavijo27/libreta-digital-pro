@@ -53,6 +53,13 @@
   color: var(--color-primary);
 }
 
+.container {
+  flex: 1; /* 👈 CLAVE */
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
 /* 📱 Responsive */
 @media (max-width: 900px) {
   .dashboard {
@@ -74,3 +81,4 @@
     flex-direction: column;
   }
 }
+

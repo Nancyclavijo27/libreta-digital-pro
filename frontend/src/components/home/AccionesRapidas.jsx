@@ -1,25 +1,44 @@
 import { useNavigate } from "react-router-dom";
+import styles from "./AccionesRapidas.module.css";
 
 const AccionesRapidas = () => {
   const navigate = useNavigate();
 
   return (
-    <div>
-      <button onClick={() => navigate("/ventas")}>
-        Registrar Venta
+    <div className={styles.grid}>
+
+      <button
+        className={`${styles.card} ${styles.orange}`}
+        onClick={() => navigate("/ventas")}
+      >
+        📦
+        <span>Registrar Venta</span>
       </button>
 
-       <button onClick={() => navigate("/deudas")}>
-        Ver Deudas
+      <button
+        className={`${styles.card} ${styles.blue}`}
+        onClick={() => navigate("/entrada")}
+      >
+        🧾
+        <span>Registrar Entrada</span>
       </button>
 
-      <button onClick={() => navigate("/inventario")}>
-        Inventario
+      <button
+        className={`${styles.card} ${styles.red}`}
+        onClick={() => navigate("/deudas")}
+      >
+        🚚
+        <span>Ver Deudas</span>
       </button>
-      
-      <button onClick={() => navigate("/clientes")}>
-         Clientes
+
+      <button
+        className={`${styles.card} ${styles.green}`}
+        onClick={() => navigate("/inventario")}
+      >
+        🏪
+        <span>Inventario</span>
       </button>
+
     </div>
   );
 };

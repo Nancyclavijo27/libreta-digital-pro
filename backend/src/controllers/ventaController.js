@@ -31,7 +31,7 @@ export const createVenta = async (req, res) => {
 
     // 🔹 Fecha y hora
     const ahora = new Date();
-    const fecha = ahora.toISOString().split("T")[0];
+    const fecha = new Date().toLocaleDateString("sv-SE");
     const hora = ahora.toTimeString().split(" ")[0];
 
     let totalVenta = 0;

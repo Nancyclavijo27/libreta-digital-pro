@@ -14,6 +14,10 @@ const Deudas = () => {
         ← Volver
       </button>
 
+      <button onClick={() => navigate("/crear-cliente")}>
+  + Nuevo cliente
+</button>
+
       <h2>Deudas</h2>
 
       <ListaDeudas clientes={clientes} />
