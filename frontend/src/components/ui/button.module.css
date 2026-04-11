@@ -1,14 +1,35 @@
 .button {
-  background-color: #2d6a6a;
-  color: #ffffff;
+  background: #15803d;
+  color: white;
+  padding: 16px;
+  border-radius: 12px;
   border: none;
-  border-radius: 10px;
-  padding: 0.7rem 1.4rem;
+  font-size: 16px;
   font-weight: 600;
+
   cursor: pointer;
-  transition: background-color 0.2s ease;
 }
 
 .button:hover {
-  background-color: #245555;
+  background: #166534;
+}
+/* variantes */
+.primary {
+  background: var(--color-primary);
+  color: white;
+}
+
+.secondary {
+  background: var(--color-secondary);
+  color: white;
+}
+
+.danger {
+  background: var(--color-danger);
+  color: white;
+}
+
+/* ancho completo */
+.full {
+  width: 100%;
 }

@@ -2,6 +2,10 @@ import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../api/axiosInstance";
 import { AuthContext } from "../context/AuthContext";
+import Input from "../components/ui/Input";
+import Button from "../components/ui/Button";
+import Card from "../components/ui/Card";
+import styles from "./Login.module.css";
 
 export default function Login() {
 
@@ -38,26 +42,53 @@ export default function Login() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+  <div className={styles.container}>
 
-      {error && <p>{error}</p>}
+    <div className={styles.cardWrapper}>
 
-      <input
-        type="text"
-        placeholder="Username"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-      />
+      <img src="/logo.png" className={styles.image} />
 
-      <input
-        type="password"
-        placeholder="Contraseña"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
+      <h1 className={styles.title}>
+        Libreta Digital <span>Pro</span>
+      </h1>
 
-      <button type="submit">Entrar</button>
+      <form onSubmit={handleSubmit} className={styles.form}>
 
-    </form>
-  );
+        {error && <p>{error}</p>}
+
+        <div className={styles.inputBox}>
+          <span className={styles.icon}>📧</span>
+          <input
+            type="text"
+            placeholder="Email"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+        </div>
+
+        <div className={styles.inputBox}>
+          <span className={styles.icon}>🔒</span>
+          <input
+            type="password"
+            placeholder="Contraseña"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+
+        <button type="submit" className={styles.button}>
+          Entrar
+        </button>
+
+      </form>
+
+      
+
+      <p className={styles.copy}>
+        © 2025 Libreta Digital Pro - Nancy Clavijo
+      </p>
+
+    </div>
+  </div>
+);
 }

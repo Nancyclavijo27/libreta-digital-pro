@@ -1,19 +1,15 @@
 :root {
-  /* 🎨 Colores – marca Nancy */
-  --color-primary: #2563eb;     /* azul confianza */
-  --color-secondary: #16a34a;   /* verde progreso */
-  --color-accent: #f59e0b;      /* acento cálido */
-  --color-dark: #0f172a;        /* texto principal */
-  --color-light: #f8fafc;       /* fondo claro */
-  --color-muted: #64748b;       /* texto secundario */
+  --color-primary: #15803d;   /* verde más profundo (botones principales) */
+  --color-secondary: #22c55e; /* verde brillante */
 
-  /* 🅰 Tipografía */
-  --font-main: 'Inter', system-ui, sans-serif;
+  --color-danger: #ef4444;
+  --color-warning: #f59e0b;
 
-  /* 📐 Tamaños */
-  --radius: 12px;
-  --radius-sm: 6px;
+  --bg-main: #f3f4f6;  /* gris suave */
+  --bg-card: #ffffff;
 
-  /* ⏱ Transiciones */
-  --transition: 0.2s ease-in-out;
+  --text-main: #111827;
+  --text-light: #6b7280;
+
+  --radius: 14px; /* más moderno */
 }

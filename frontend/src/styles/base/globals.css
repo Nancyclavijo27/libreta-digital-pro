@@ -1,8 +1,8 @@
 body {
-  font-family: var(--font-main);
-  background-color: var(--color-light);
-  color: var(--color-dark);
-  line-height: 1.5;
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  font-size: 16px;
+  background: #f3f4f6; /* 👈 gris claro general */
 }
 
 a {
@@ -16,5 +16,5 @@ h1 {
 }
 
 p {
-  color: var(--color-muted);
+  color: #6b7280;
 }
