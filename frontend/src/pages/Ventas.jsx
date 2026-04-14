@@ -2,84 +2,85 @@ import { useVentas } from "../hooks/useVentas";
 import { useNavigate } from "react-router-dom";
 
 import SelectorProducto from "../components/ventas/SelectorProducto";
-import FormularioVenta from "../components/ventas/FormularioVenta";
+import ListaProductos from "../components/ventas/ListaProductos";
 import TipoPago from "../components/ventas/TipoPago";
 import BotonConfirmarVenta from "../components/ventas/BotonConfirmarVenta";
+
+import styles from "./Ventas.module.css";
 
 const Ventas = () => {
   const navigate = useNavigate();
 
   const {
     productos,
-    productoSeleccionado,
-    cantidad,
-    precio,
-    total,
+    items,
     tipoPago,
+    total,
     loading,
 
-    setCantidad,
-    setPrecio,
     setTipoPago,
     setClienteId,
+
     seleccionarProducto,
+    cambiarCantidad,
+    eliminarProducto,
     crearVenta,
   } = useVentas();
 
   const handleVenta = async () => {
     const ok = await crearVenta();
-
-    if (ok) {
-      navigate("/home");
-    }
+    if (ok) navigate("/home");
   };
 
   return (
-    <div>
-      <button onClick={() => navigate("/home")}>
-        ← Volver
-      </button>
+    <div className={styles.container}>
 
-      <h2>Registrar Venta</h2>
+      <div className={styles.topActions}>
+  <button onClick={() => navigate("/home")} className={styles.btnBack}>
+    ← Volver
+  </button>
 
-      
-      <button onClick={() => navigate("/ventas-historial")}>
-        Ver Ventas
-      </button>
+  <button onClick={() => navigate("/ventas-historial")} className={styles.btnView}>
+    Ver ventas
+  </button>
+</div>
 
+<h2 className={styles.title}>Registrar Venta</h2>
 
-      {/* 👇 PRODUCTO */}
+      {/* 🔥 SELECTOR */}
       <SelectorProducto
         productos={productos}
         onSelect={seleccionarProducto}
       />
 
-      {/* 👇 INFO CLARA */}
-      {productoSeleccionado && (
-        <p>
-          Producto: <strong>{productoSeleccionado.nombre}</strong> ({productoSeleccionado.unidad})
-        </p>
-      )}
-
-      {/* 👇 FORMULARIO */}
-      <FormularioVenta
-        cantidad={cantidad}
-        setCantidad={setCantidad}
-        precio={precio}
-        setPrecio={setPrecio}
-        total={total}
+      {/* 🔥 LISTA */}
+      <ListaProductos
+        items={items}
+        cambiarCantidad={cambiarCantidad}
+        eliminarProducto={eliminarProducto}
       />
 
+      {/* 🔥 TOTAL */}
+      <div className={styles.totalBox}>
+  <span>Total:</span>
+  <span className={styles.totalNumero}>
+    ${total.toLocaleString()}
+  </span>
+</div>
+
+      {/* 🔥 PAGO */}
       <TipoPago
         tipoPago={tipoPago}
         setTipoPago={setTipoPago}
         setClienteId={setClienteId}
       />
 
+      {/* 🔥 BOTÓN */}
       <BotonConfirmarVenta
         onConfirm={handleVenta}
         loading={loading}
       />
+
     </div>
   );
 };

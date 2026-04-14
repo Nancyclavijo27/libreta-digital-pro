@@ -1,0 +1,90 @@
+.lista {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* 🔥 CARD */
+.card {
+  background: white;
+  padding: 12px;
+  border-radius: 14px;
+
+  display: grid;
+  grid-template-columns: 1fr auto auto auto;
+  align-items: center;
+  gap: 10px;
+
+  box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+}
+
+/* INFO */
+.info {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 🔥 NOMBRE (más grande) */
+.nombre {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+/* PRECIO */
+.precio {
+  font-size: 14px;
+  color: #1f7a4c;
+}
+
+/* 🔥 CONTADOR */
+.controles {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  background: #f3f4f6;
+  padding: 4px 6px;
+  border-radius: 10px;
+}
+
+/* BOTONES + - */
+.btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: none;
+
+  background: white;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* NUMERO */
+.cantidad {
+  font-size: 16px;
+  font-weight: bold;
+  min-width: 20px;
+  text-align: center;
+}
+
+/* 🔥 TOTAL */
+.total {
+  font-weight: bold;
+  font-size: 15px;
+}
+
+/* ❌ ELIMINAR */
+.eliminar {
+  border: none;
+  background: transparent;
+  color: #ef4444;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* VACÍO */
+.vacio {
+  text-align: center;
+  color: #9ca3af;
+}

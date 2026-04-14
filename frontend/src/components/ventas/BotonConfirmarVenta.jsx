@@ -1,6 +1,12 @@
+import styles from "./BotonConfirmarVenta.module.css";
+
 const BotonConfirmarVenta = ({ onConfirm, loading }) => {
   return (
-    <button onClick={onConfirm} disabled={loading}>
+    <button
+      className={styles.button}
+      onClick={onConfirm}
+      disabled={loading}
+    >
       {loading ? "Guardando..." : "Confirmar Venta"}
     </button>
   );

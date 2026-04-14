@@ -1,0 +1,68 @@
+.container {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  background: #f3f4f6;
+  min-height: 100vh;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+
+/* 🔝 BOTONES SUPERIORES */
+.topActions {
+  display: flex;
+  gap: 10px;
+}
+
+.btnBack {
+  flex: 1;
+  background: #e5e7eb;
+  color: #111;
+  border: none;
+  padding: 12px;
+  border-radius: 10px;
+
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.btnView {
+  flex: 1;
+  background: #22c55e;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 10px;
+
+  font-size: 15px;
+  font-weight: 600;
+}
+.title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* 🔥 TOTAL */
+.totalBox {
+  background: #fff;
+  padding: 12px;
+  border-radius: 12px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  font-size: 16px;
+}
+
+.totalNumero {
+  font-weight: bold;
+  font-size: 18px;
+  color: #111; /* o rojo si quieres destacar */
+}

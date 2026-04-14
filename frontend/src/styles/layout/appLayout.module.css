@@ -24,14 +24,32 @@
 
   display: flex;
   flex-direction: column;
+
+  overflow-y: auto;
+  padding-bottom: 80px;
+
+  /* 🔥 ocultar scrollbar */
+  scrollbar-width: none;       /* Firefox */
+  -ms-overflow-style: none;    /* IE/Edge */
 }
 
+.main::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
 /* bottom nav fijo */
 .bottomNav {
+  position: fixed;
+  bottom: 0;
+
+  width: 100%;
+  max-width: 480px;
+
   background: white;
   border-top: 1px solid #eee;
   padding: 10px;
 
   display: flex;
   justify-content: space-around;
+
+  z-index: 1000;
 }

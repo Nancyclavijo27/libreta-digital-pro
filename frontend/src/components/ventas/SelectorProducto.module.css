@@ -1,0 +1,38 @@
+.container {
+  margin-top: 10px;
+}
+
+/* 🔥 CAJA TIPO BUSCADOR */
+.inputWrapper {
+  display: flex;
+  align-items: center;
+
+  background: #fff;
+  border-radius: 14px;
+  padding: 10px;
+
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+/* ICONO */
+.icon {
+  font-size: 18px;
+  margin-right: 8px;
+  color: #1f7a4c;
+}
+
+/* SELECT */
+.select {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  background: transparent;
+}
+
+/* EFECTO AL TOCAR */
+.inputWrapper:focus-within {
+  border-color: #1f7a4c;
+  box-shadow: 0 0 0 2px rgba(31, 122, 76, 0.2);
+}

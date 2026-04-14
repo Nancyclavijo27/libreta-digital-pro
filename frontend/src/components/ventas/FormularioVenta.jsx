@@ -1,33 +1,12 @@
-const FormularioVenta = ({
-  cantidad,
-  setCantidad,
-  precio,
-  setPrecio,
-  total,
-}) => {
+import styles from "./FormularioVenta.module.css";
+
+const ResumenVenta = ({ total }) => {
   return (
-    <div>
-
-      <p>Cantidad</p>
-      <input
-        type="text"
-        inputMode="numeric"
-        value={cantidad}
-        onChange={(e) => setCantidad(Number(e.target.value) || 0)}
-      />
-
-      <p>Precio por unidad</p>
-      <input
-        type="text"
-        inputMode="numeric"
-        value={precio}
-        onChange={(e) => setPrecio(Number(e.target.value) || 0)}
-      />
-
-      <p><strong>Total: ${total}</strong></p>
-
+    <div className={styles.card}>
+      <p>Total</p>
+      <h2>${Number(total || 0).toLocaleString()}</h2>
     </div>
   );
 };
 
-export default FormularioVenta;
+export default ResumenVenta;

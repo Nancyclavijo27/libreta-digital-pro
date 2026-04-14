@@ -1,0 +1,13 @@
+.card {
+  background: white;
+  padding: 16px;
+  border-radius: 14px;
+  text-align: center;
+
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+.card h2 {
+  color: #16a34a;
+  font-size: 22px;
+}

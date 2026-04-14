@@ -2,9 +2,7 @@ import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../api/axiosInstance";
 import { AuthContext } from "../context/AuthContext";
-import Input from "../components/ui/Input";
-import Button from "../components/ui/Button";
-import Card from "../components/ui/Card";
+
 import styles from "./Login.module.css";
 
 export default function Login() {
@@ -46,7 +44,7 @@ export default function Login() {
 
     <div className={styles.cardWrapper}>
 
-      <img src="/logo.png" className={styles.image} />
+      <img src="/logo.png" className={styles.image} alt="logo" />
 
       <h1 className={styles.title}>
         Libreta Digital <span>Pro</span>

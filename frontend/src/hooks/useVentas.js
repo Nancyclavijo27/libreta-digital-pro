@@ -3,10 +3,12 @@ import api from "../api/axiosInstance";
 
 export const useVentas = () => {
   const [productos, setProductos] = useState([]);
-  const [productoSeleccionado, setProductoSeleccionado] = useState(null);
 
-  const [cantidad, setCantidad] = useState(1);
-  const [precio, setPrecio] = useState(0);
+  // 🔥 NUEVO → lista de productos en la venta
+  const [items, setItems] = useState([]);
+
+  // 🔥 dejamos esto para compatibilidad (NO lo quitamos)
+  const [productoSeleccionado, setProductoSeleccionado] = useState(null);
 
   const [tipoPago, setTipoPago] = useState("contado");
   const [clienteId, setClienteId] = useState(null);
@@ -27,53 +29,86 @@ export const useVentas = () => {
     fetchProductos();
   }, []);
 
-  // 🔹 seleccionar producto
+  // 🔥 AGREGAR PRODUCTO (CLAVE)
   const seleccionarProducto = (producto) => {
     if (!producto) return;
 
     setProductoSeleccionado(producto);
-    setPrecio(Number(producto.precio_base) || 0);
-    setCantidad(1);
+
+    // 🔍 buscar si ya existe en la lista
+    const existe = items.find(i => i.producto_id === producto.id);
+
+    if (existe) {
+      // 🔁 si ya existe → suma cantidad
+      setItems(items.map(i =>
+        i.producto_id === producto.id
+          ? { ...i, cantidad: i.cantidad + 1 }
+          : i
+      ));
+    } else {
+      // ➕ nuevo producto
+      setItems([
+        ...items,
+        {
+          producto_id: producto.id,
+          nombre: producto.nombre,
+          precio_unitario: Number(producto.precio_base) || 0,
+          cantidad: 1,
+        }
+      ]);
+    }
   };
 
-  const total = cantidad * precio;
+  // 🔥 CAMBIAR CANTIDAD
+  const cambiarCantidad = (id, delta) => {
+    setItems(items.map(i => {
+      if (i.producto_id === id) {
+        const nuevaCantidad = i.cantidad + delta;
+        return {
+          ...i,
+          cantidad: nuevaCantidad < 1 ? 1 : nuevaCantidad
+        };
+      }
+      return i;
+    }));
+  };
+
+  // 🔥 ELIMINAR PRODUCTO (opcional pero pro)
+  const eliminarProducto = (id) => {
+    setItems(items.filter(i => i.producto_id !== id));
+  };
+
+  // 🔥 TOTAL GENERAL
+  const total = items.reduce(
+    (acc, i) => acc + (i.cantidad * i.precio_unitario),
+    0
+  );
 
   // 🔥 CREAR VENTA
   const crearVenta = async () => {
-    if (!productoSeleccionado) {
-      alert("Seleccione un producto");
+    if (items.length === 0) {
+      alert("Agrega al menos un producto");
       return false;
     }
 
-    // 🔥 VALIDACIÓN CLAVE (AQUÍ VA)
     if (tipoPago === "credito" && !clienteId) {
-      alert("⚠️ Selecciona un cliente antes de continuar");
+      alert("⚠️ Selecciona un cliente");
       return false;
     }
 
     setLoading(true);
 
     try {
-      const payload = {
-        productos: [
-          {
-            producto_id: productoSeleccionado.id,
-            cantidad,
-            precio_unitario: precio,
-          },
-        ],
+      await api.post("/ventas", {
+        productos: items,
         tipo_pago: tipoPago,
         cliente_id: tipoPago === "credito" ? clienteId : null,
-      };
-
-      await api.post("/ventas", payload);
+      });
 
       alert("Venta registrada ✅");
 
       // reset
-      setProductoSeleccionado(null);
-      setCantidad(1);
-      setPrecio(0);
+      setItems([]);
       setClienteId(null);
 
       return true;
@@ -89,18 +124,18 @@ export const useVentas = () => {
 
   return {
     productos,
+    items,
     productoSeleccionado,
-    cantidad,
-    precio,
     tipoPago,
     total,
     loading,
 
-    setCantidad,
-    setPrecio,
     setTipoPago,
     setClienteId,
+
     seleccionarProducto,
+    cambiarCantidad,
+    eliminarProducto,
     crearVenta,
   };
 };
