@@ -1,0 +1,79 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* 🔙 botón volver */
+.btnBack {
+  background: #d1d5db;
+  color: #111827;
+
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  width: fit-content;
+}
+
+/* título */
+.title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* estados */
+.loading,
+.empty {
+  text-align: center;
+  color: #6b7280;
+}
+
+/* 🔥 CARD */
+.card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 12px;
+
+  box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* encabezado fecha/hora */
+.header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+/* 🔥 total destacado */
+.total {
+  font-size: 18px;
+  font-weight: bold;
+  color: #111827;
+}
+
+/* tipo pago */
+.pago {
+  font-size: 14px;
+  color: #374151;
+}
+
+/* lista productos */
+.productos {
+  margin-top: 6px;
+  padding-left: 10px;
+}
+
+/* item producto */
+.itemProducto {
+  font-size: 13px;
+  color: #374151;
+}

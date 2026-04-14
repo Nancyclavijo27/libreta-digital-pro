@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import api from "../api/axiosInstance";
 import { useNavigate } from "react-router-dom";
+import styles from "./VentasHistorial.module.css";
 
 const VentasHistorial = () => {
   const [ventas, setVentas] = useState([]);
@@ -24,46 +25,56 @@ const VentasHistorial = () => {
   }, []);
 
   return (
-    <div>
+    <div className={styles.container}>
+
       {/* 🔙 Volver */}
-      <button onClick={() => navigate("/home")}>
+      <button
+        onClick={() => navigate("/home")}
+        className={styles.btnBack}
+      >
         ← Volver
       </button>
 
-      <h2>Historial de Ventas</h2>
+      <h2 className={styles.title}>Historial de Ventas</h2>
 
       {/* ⏳ Cargando */}
-      {loading && <p>Cargando ventas...</p>}
+      {loading && <p className={styles.loading}>Cargando ventas...</p>}
 
       {/* ❌ Sin datos */}
       {!loading && ventas.length === 0 && (
-        <p>No hay ventas registradas</p>
+        <p className={styles.empty}>No hay ventas registradas</p>
       )}
 
       {/* ✅ Lista */}
       {!loading &&
         ventas.map((venta) => (
-          <div key={venta.id} style={styles.card}>
-            
-            <p><strong>Fecha:</strong> {venta.fecha}</p>
-            <p><strong>Hora:</strong> {venta.hora}</p>
+          <div key={venta.id} className={styles.card}>
 
-            <p>
-              <strong>Total:</strong> ${venta.total}
-            </p>
+            {/* fecha y hora */}
+            <div className={styles.header}>
+              <span>{venta.fecha}</span>
+              <span>{venta.hora}</span>
+            </div>
 
-            <p>
-              <strong>Pago:</strong> {venta.tipo_pago}
-            </p>
+            {/* total */}
+            <div className={styles.total}>
+              Total: ${Number(venta.total).toLocaleString()}
+            </div>
 
-            {/* 👇 productos vendidos */}
+            {/* tipo pago */}
+            <div className={styles.pago}>
+              Pago: {venta.tipo_pago}
+            </div>
+
+            {/* productos */}
             {venta.DetalleVenta && (
-              <div>
+              <div className={styles.productos}>
                 <strong>Productos:</strong>
                 <ul>
                   {venta.DetalleVenta.map((d) => (
-                    <li key={d.id}>
-                      {d.Product?.nombre} | Cantidad: {d.cantidad} | ${d.subtotal}
+                    <li key={d.id} className={styles.itemProducto}>
+                      {d.Product?.nombre} × {d.cantidad} — $
+                      {Number(d.subtotal).toLocaleString()}
                     </li>
                   ))}
                 </ul>
@@ -74,15 +85,6 @@ const VentasHistorial = () => {
         ))}
     </div>
   );
-};
-
-const styles = {
-  card: {
-    background: "#fff",
-    padding: "10px",
-    marginBottom: "10px",
-    borderRadius: "8px",
-  },
 };
 
 export default VentasHistorial;
