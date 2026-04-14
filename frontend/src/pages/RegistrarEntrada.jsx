@@ -1,5 +1,6 @@
 import { useEntradas } from "../hooks/useEntradas";
 import { useNavigate } from "react-router-dom";
+import styles from "./RegistrarEntrada.module.css";
 
 const RegistrarEntrada = () => {
   const navigate = useNavigate();
@@ -30,14 +31,22 @@ const RegistrarEntrada = () => {
   };
 
   return (
-    <div>
-      <button onClick={() => navigate("/inventario")}>
+    <div className={styles.container}>
+
+      <button
+        onClick={() => navigate("/inventario")}
+        className={styles.btnBack}
+      >
         ← Volver
       </button>
 
-      <h2>Registrar Entrada</h2>
+      <h2 className={styles.title}>Registrar Entrada</h2>
+
+      {/* PRODUCTO */}
+      <label className={styles.label}>Producto</label>
 
       <select
+        className={styles.select}
         value={productoSeleccionado?.id || ""}
         onChange={(e) => {
           const producto = productos.find(
@@ -46,7 +55,7 @@ const RegistrarEntrada = () => {
           seleccionarProducto(producto);
         }}
       >
-        <option value="">Seleccione producto</option>
+        <option value="">Seleccionar producto</option>
 
         {productos.map((p) => (
           <option key={p.id} value={p.id}>
@@ -55,27 +64,64 @@ const RegistrarEntrada = () => {
         ))}
       </select>
 
+      {/* STOCK */}
       {productoSeleccionado && (
-        <p>
-          {productoSeleccionado.nombre} - Stock: {productoSeleccionado.stock}
-        </p>
+        <p className={styles.info}>
+  Stock actual:{" "}
+  <span className={styles.stockNumero}>
+    {Number(productoSeleccionado.stock).toLocaleString()}{" "}
+    {productoSeleccionado.unidad}
+  </span>
+</p>
       )}
 
-      <input
-        type="number"
-        value={cantidad}
-        onChange={(e) => setCantidad(Number(e.target.value))}
-      />
+      {/* CANTIDAD */}
+      <label className={styles.label}>Cantidad</label>
+
+      <div className={styles.row}>
+        <input
+          type="text"
+          inputMode="decimal"
+          className={styles.inputSmall}
+          value={cantidad}
+          onChange={(e) => setCantidad(Number(e.target.value))}
+          placeholder="0"
+        />
+
+        <div className={styles.unidad}>
+          {productoSeleccionado?.unidad || "Unidad"}
+        </div>
+      </div>
+
+      {/* COSTO */}
+      <label className={styles.label}>Costo</label>
 
       <input
-        type="number"
+        type="text"
+        inputMode="numeric"
+        className={styles.input}
         value={costo}
         onChange={(e) => setCosto(Number(e.target.value))}
+        placeholder="Ej: 5000"
       />
 
-      <button onClick={handleGuardar} disabled={loading}>
-        {loading ? "Guardando..." : "Guardar"}
+      {/* TOTAL */}
+      <p className={styles.totalCosto}>
+  Total compra:{" "}
+  <span className={styles.totalNumero}>
+    ${Number(cantidad * costo || 0).toLocaleString()}
+  </span>
+</p>
+
+      {/* BOTÓN */}
+      <button
+        onClick={handleGuardar}
+        disabled={loading}
+        className={styles.btnGuardar}
+      >
+        {loading ? "Guardando..." : "Guardar Entrada"}
       </button>
+
     </div>
   );
 };

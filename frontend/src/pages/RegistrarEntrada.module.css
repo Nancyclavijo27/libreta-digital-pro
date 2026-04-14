@@ -1,0 +1,130 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* volver */
+.btnBack {
+  background: #d1d5db;
+  color: #111827;
+  font-weight: 500;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  width: fit-content;
+}
+
+/* título */
+.title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* label */
+.label {
+  font-size: 15px;
+  font-weight: 500;
+  color: #374151;
+}
+
+/* select */
+.select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+}
+
+/* input */
+.input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+}
+
+/* fila */
+.row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+
+/* cantidad */
+.inputSmall {
+  flex: 1;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+}
+
+/* quitar flechas */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* unidad */
+.unidad {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #f3f4f6;
+  border-radius: 12px;
+
+  padding: 12px;
+  min-width: 90px;
+
+  font-weight: 500;
+
+  font-size: 14px;
+  color: #374151;
+}
+
+/* info */
+.info {
+  font-size: 14px;
+  color: #6b7280;
+  margin-top: -6px;
+}
+
+/* total */
+
+.totalCosto {
+  font-size: 15px;
+  color: #374151;
+  margin-top: 5px;
+  background: #f9fafb;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.totalNumero {
+  font-weight: bold;
+  font-size: 18px;
+  color: #111827; /* elegante */
+}
+
+.totalCosto span {
+  color: #16a34a; /* verde suave */
+}
+
+/* botón */
+.btnGuardar {
+  background: #22c55e;
+  color: white;
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+  font-weight: 600;
+}
+
+.stockNumero {
+  font-weight: bold;
+  font-size: 16px;
+  color: #111827;
+}

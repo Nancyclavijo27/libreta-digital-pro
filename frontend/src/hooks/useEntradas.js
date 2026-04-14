@@ -11,16 +11,16 @@ export const useEntradas = () => {
   const [loading, setLoading] = useState(false);
 
   // 🔹 traer productos
-  useEffect(() => {
-    const fetchProductos = async () => {
-      try {
-        const res = await api.get("/productos");
-        setProductos(res.data);
-      } catch (error) {
-        console.error("Error cargando productos:", error);
-      }
-    };
+  const fetchProductos = async () => {
+    try {
+      const res = await api.get("/productos");
+      setProductos(res.data);
+    } catch (error) {
+      console.error("Error cargando productos:", error);
+    }
+  };
 
+  useEffect(() => {
     fetchProductos();
   }, []);
 
@@ -36,6 +36,11 @@ export const useEntradas = () => {
       return false;
     }
 
+    if (!costo || costo <= 0) {
+      alert("Ingrese el costo del producto");
+      return false;
+    }
+
     setLoading(true);
 
     try {
@@ -48,6 +53,9 @@ export const useEntradas = () => {
       await api.post("/entradas", payload);
 
       alert("Entrada registrada ✅");
+
+      // 🔥 ACTUALIZA PRODUCTOS (stock nuevo)
+      await fetchProductos();
 
       // reset
       setProductoSeleccionado(null);
