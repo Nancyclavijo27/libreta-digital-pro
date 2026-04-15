@@ -1,0 +1,57 @@
+.container {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* botones arriba */
+.topActions {
+  display: flex;
+  gap: 10px;
+}
+
+.btnBack {
+  flex: 1;
+  background: #d1d5db; /* gris más visible */
+  color: #111;
+  border: none;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 15px;
+}
+
+.btnNew {
+  flex: 1;
+  background: #16a34a;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 15px;
+}
+
+/* título */
+.title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* tarjeta total */
+.totalBox {
+  background: #fee2e2;
+  padding: 16px;
+  border-radius: 14px;
+  text-align: center;
+}
+
+.totalLabel {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.totalNumero {
+  font-size: 22px;
+  font-weight: bold;
+  color: #dc2626;
+}
