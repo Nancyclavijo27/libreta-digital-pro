@@ -20,6 +20,20 @@ export const createProduct = async (req, res) => {
       });
     }
 
+    const nombreLimpio = nombre.trim().toLowerCase();
+
+const existe = await Product.findOne({
+  where: {
+    negocio_id: req.negocio_id,
+  },
+});
+
+if (existe && existe.nombre.trim().toLowerCase() === nombreLimpio) {
+  return res.status(400).json({
+    message: "El producto ya existe",
+  });
+}
+
     const product = await Product.create({
       nombre,
       descripcion,

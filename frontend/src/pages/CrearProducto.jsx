@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useProductos } from "../hooks/useProductos";
+import styles from "./CrearProducto.module.css";
 
 const CrearProducto = () => {
   const navigate = useNavigate();
-  const { crearProducto, loading } = useProductos();
+  const { crearProducto, loading, productos } = useProductos();
 
   const [form, setForm] = useState({
     nombre: "",
@@ -21,64 +22,114 @@ const CrearProducto = () => {
   };
 
   const handleSubmit = async () => {
-    if (!form.nombre || !form.unidad || !form.precio_base) {
-      alert("Complete los campos obligatorios");
+
+    const nombreLimpio = form.nombre.trim();
+
+    if (!nombreLimpio) {
+      alert("Nombre inválido");
       return;
     }
 
-    const ok = await crearProducto(form);
+    const existe = productos.some(
+      (p) => p.nombre.toLowerCase().trim() === nombreLimpio.toLowerCase()
+    );
 
-    if (ok) {
-      navigate("/productos");
+    if (existe) {
+      alert("Este producto ya existe");
+      return;
     }
+
+    if (!form.unidad) {
+      alert("Seleccione una unidad");
+      return;
+    }
+
+    if (!form.precio_base || Number(form.precio_base) <= 0) {
+      alert("El precio debe ser mayor a 0");
+      return;
+    }
+
+    if (form.stock && Number(form.stock) < 0) {
+      alert("El stock no puede ser negativo");
+      return;
+    }
+
+    const payload = {
+      ...form,
+      nombre: nombreLimpio,
+      precio_base: Number(form.precio_base),
+      stock: Number(form.stock) || 0,
+    };
+
+    const ok = await crearProducto(payload);
+
+    if (ok) navigate("/inventario");
   };
 
   return (
-    <div>
-      {/* 🔙 Volver */}
-      <button onClick={() => navigate("/productos")}>
+    <div className={styles.container}>
+
+      <button
+        onClick={() => navigate("/inventario")}
+        className={styles.btnBack}
+      >
         ← Volver
       </button>
 
-      <h2>Crear Producto</h2>
+      <h2 className={styles.title}>Crear Producto</h2>
 
-      <div>
-        <input
-          name="nombre"
-          placeholder="Nombre"
-          onChange={handleChange}
-        />
-      </div>
+      {/* NOMBRE */}
+      <label className={styles.label}>Nombre</label>
+      <input
+        name="nombre"
+        className={styles.input}
+        placeholder="Ej: Pera"
+        onChange={handleChange}
+      />
 
-      <div>
-        <input
-          name="unidad"
-          placeholder="Unidad (kg, unidad)"
-          onChange={handleChange}
-        />
-      </div>
+      {/* UNIDAD */}
+      <label className={styles.label}>Unidad</label>
+      <select
+        name="unidad"
+        className={styles.select}
+        value={form.unidad}
+        onChange={handleChange}
+      >
+        <option value="">Seleccionar unidad</option>
+        <option value="unidad">Unidad</option>
+        <option value="bultos">Bultos</option>
+        <option value="kg">Kilos</option>
+        <option value="cajas">Cajas</option>
+      </select>
 
-      <div>
-        <input
-          name="precio_base"
-          type="number"
-          placeholder="Precio"
-          onChange={handleChange}
-        />
-      </div>
+      {/* PRECIO */}
+      <label className={styles.label}>Precio</label>
+      <input
+        name="precio_base"
+        type="number"
+        className={styles.input}
+        placeholder="Ej: 5000"
+        onChange={handleChange}
+      />
 
-      <div>
-        <input
-          name="stock"
-          type="number"
-          placeholder="Stock inicial"
-          onChange={handleChange}
-        />
-      </div>
+      {/* STOCK */}
+      <label className={styles.label}>Stock inicial</label>
+      <input
+        name="stock"
+        type="number"
+        className={styles.input}
+        placeholder="Ej: 10"
+        onChange={handleChange}
+      />
 
-      <button onClick={handleSubmit} disabled={loading}>
-        {loading ? "Guardando..." : "Crear Producto"}
+      <button
+        onClick={handleSubmit}
+        disabled={loading}
+        className={styles.btnGuardar}
+      >
+        {loading ? "Guardando..." : "Guardar Producto"}
       </button>
+
     </div>
   );
 };
