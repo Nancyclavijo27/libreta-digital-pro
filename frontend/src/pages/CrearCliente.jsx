@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useClientes } from "../hooks/useClientes";
+import styles from "./CrearCliente.module.css";
 
 const CrearCliente = () => {
   const navigate = useNavigate();
@@ -33,35 +34,54 @@ const CrearCliente = () => {
   };
 
   return (
-    <div>
-      <button onClick={() => navigate("/clientes")}>
-        ← Volver
-      </button>
+    <div className={styles.container}>
 
-      <h2>Crear Cliente</h2>
+  <button
+    onClick={() => navigate("/clientes")}
+    className={styles.btnBack}
+  >
+    ← Volver
+  </button>
 
-      <input
-        name="nombre"
-        placeholder="Nombre"
-        onChange={handleChange}
-      />
+  <h2 className={styles.title}>Crear Cliente</h2>
 
-      <input
-        name="telefono"
-        placeholder="Teléfono"
-        onChange={handleChange}
-      />
+  {/* NOMBRE */}
+  <label className={styles.label}>Nombre *</label>
+  <input
+    name="nombre"
+    className={styles.input}
+    placeholder="Ej: Juan Pérez"
+    onChange={handleChange}
+  />
 
-      <input
-        name="direccion"
-        placeholder="Dirección"
-        onChange={handleChange}
-      />
+  {/* TELÉFONO */}
+  <label className={styles.label}>Teléfono</label>
+  <input
+    name="telefono"
+    className={styles.input}
+    placeholder="Ej: 3001234567"
+    onChange={handleChange}
+  />
 
-      <button onClick={handleSubmit} disabled={loading}>
-        {loading ? "Guardando..." : "Crear Cliente"}
-      </button>
-    </div>
+  {/* DIRECCIÓN */}
+  <label className={styles.label}>Dirección</label>
+  <input
+    name="direccion"
+    className={styles.input}
+    placeholder="Ej: Local 12 - Plaza"
+    onChange={handleChange}
+  />
+
+  {/* BOTÓN */}
+  <button
+    onClick={handleSubmit}
+    disabled={loading}
+    className={styles.btnGuardar}
+  >
+    {loading ? "Guardando..." : "Guardar Cliente"}
+  </button>
+
+</div>
   );
 };
 
