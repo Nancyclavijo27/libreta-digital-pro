@@ -1,0 +1,108 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* volver */
+.btnBack {
+  width: fit-content;
+  background: #d1d5db;
+  color: #111;
+
+  padding: 8px 14px;
+  border-radius: 10px;
+  border: none;
+
+  font-size: 14px;
+}
+
+/* nombre cliente */
+.title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* total pendiente */
+.totalBox {
+  background: #fee2e2;
+  padding: 14px;
+  border-radius: 14px;
+  text-align: center;
+}
+
+.totalLabel {
+  font-size: 14px;
+  color: #7f1d1d;
+}
+
+.totalNumero {
+  font-size: 22px;
+  font-weight: bold;
+  color: #dc2626;
+}
+
+/* subtítulo */
+.subTitle {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* card venta */
+.card {
+  background: #fff;
+  padding: 14px;
+  border-radius: 14px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+/* textos */
+.text {
+  font-size: 14px;
+  color: #374151;
+}
+
+.bold {
+  font-weight: 600;
+}
+
+/* saldo rojo */
+.saldo {
+  color: #dc2626;
+  font-weight: bold;
+}
+
+/* alerta vencida */
+.alerta {
+  background: #fee2e2;
+  color: #dc2626;
+
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 8px;
+
+  width: fit-content;
+}
+
+/* botón abonar */
+.btnAbonar {
+  margin-top: 8px;
+
+  background: #16a34a;
+  color: white;
+
+  border: none;
+  padding: 10px;   /* 🔽 antes 14px */
+
+  border-radius: 10px;
+
+  font-size: 14px;  /* 🔽 antes 16px */
+  font-weight: 600;
+
+  cursor: pointer;
+}
