@@ -1,0 +1,93 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* botón volver */
+.btnBack {
+  align-self: flex-start; /* 🔥 lo pega a la izquierda */
+  
+  background: #d1d5db;
+  color: #111;
+  border: none;
+
+  padding: 8px 12px; /* 🔥 más pequeño */
+  border-radius: 8px;
+
+  font-size: 14px;
+}
+/* título */
+.title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* lista */
+.lista {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* card */
+.card {
+  background: #fff;
+  padding: 14px;
+  border-radius: 14px;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  cursor: pointer;
+}
+
+/* icono */
+.icono {
+  font-size: 20px;
+}
+
+/* info */
+.info {
+  display: flex;
+  flex-direction: column;
+}
+
+/* nombre */
+.nombre {
+  font-size: 15px;
+  font-weight: 600;
+  color: #111;
+}
+
+/* fila telefono + deuda */
+.rowDeuda {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+/* telefono */
+.telefono {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+/* badge */
+.badge {
+  background: #fee2e2;
+  color: #dc2626;
+  font-size: 12px;   /* un poquito más */
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+/* vacío */
+.vacio {
+  text-align: center;
+  color: #6b7280;
+  margin-top: 20px;
+}

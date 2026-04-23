@@ -1,45 +1,63 @@
 import { useClientes } from "../hooks/useClientes";
 import { useNavigate } from "react-router-dom";
+import styles from "./Clientes.module.css";
 
 const Clientes = () => {
   const navigate = useNavigate();
   const { clientes, loading } = useClientes();
 
   return (
-    <div style={{ padding: "20px" }}>
+    <div className={styles.container}>
 
       {/* 🔙 volver */}
-      <button onClick={() => navigate("/home")}>
+      <button
+        onClick={() => navigate("/home")}
+        className={styles.btnBack}
+      >
         ← Volver
       </button>
 
-      <h2>👤 Clientes</h2>
+      <h2 className={styles.title}>Clientes</h2>
 
-      {/* 🔹 acción */}
-      <button onClick={() => navigate("/crear-cliente")}>
-        + Crear Cliente
-      </button>
-
-      {/* 🔹 estado */}
+      {/* estado */}
       {loading && <p>Cargando...</p>}
 
-      {/* 🔹 lista */}
-      {clientes.length === 0 && <p>No hay clientes</p>}
+      {/* vacío */}
+      {!loading && clientes.length === 0 && (
+        <p className={styles.vacio}>No hay clientes</p>
+      )}
 
-      {clientes.map((c) => (
-        <div
-          key={c.id}
-          style={{
-            borderBottom: "1px solid #ccc",
-            padding: "10px",
-            cursor: "pointer",
-          }}
-          onClick={() => navigate(`/cliente/${c.id}`)} // 🔥 opcional futuro
-        >
-          <strong>{c.nombre}</strong>
-          <p>Tel: {c.telefono}</p>
-        </div>
-      ))}
+      {/* lista */}
+      <div className={styles.lista}>
+        {clientes.map((c) => (
+          <div
+            key={c.id}
+            className={styles.card}
+            onClick={() => navigate(`/cliente/${c.id}`)}
+          >
+            <div className={styles.icono}>👤</div>
+
+            <div className={styles.info}>
+              <span className={styles.nombre}>
+                {c.nombre}
+              </span>
+
+              <div className={styles.rowDeuda}>
+                <span className={styles.telefono}>
+                  Tel: {c.telefono || "—"}
+                </span>
+
+                {c.saldo_deuda > 0 && (
+                  <span className={styles.badge}>
+                    Debe
+                  </span>
+                )}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
     </div>
   );
 };

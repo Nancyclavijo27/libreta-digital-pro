@@ -1,20 +1,27 @@
 .container {
+  padding: 16px;
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
 
-/* botón volver */
+/* volver */
 .btnBack {
-  width: fit-content;
   background: #d1d5db;
-  color: #111;
-
-  padding: 8px 14px;
-  border-radius: 10px;
-
   border: none;
+  padding: 10px;
+  border-radius: 10px;
   font-size: 14px;
+}
+
+/* botón clientes (IMPORTANTE) */
+.btnClientes {
+  background: #e6f4ea;
+  color: #15803d;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  font-weight: 600;
 }
 
 /* título */
@@ -25,50 +32,54 @@
 
 /* labels */
 .label {
-  font-size: 13px;
-  font-weight: 500;
+  font-size: 14px;
   color: #374151;
 }
 
 /* inputs */
 .input {
-  width: 100%;
   padding: 12px;
-
   border-radius: 10px;
   border: 1px solid #e5e7eb;
-
-  font-size: 14px;
-  background: #fff;
-
-  outline: none;
-}
-
-.input:focus {
-  border-color: #16a34a;
-  box-shadow: 0 0 0 2px rgba(22,163,74,0.2);
+  font-size: 15px;
 }
 
 /* botón guardar */
 .btnGuardar {
   margin-top: 10px;
-
   background: #16a34a;
   color: white;
-
+  border: none;
   padding: 14px;
   border-radius: 12px;
-
-  border: none;
-  font-size: 16px;
   font-weight: bold;
-
-  cursor: pointer;
-
-  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  font-size: 16px;
 }
 
-.btnGuardar:disabled {
-  background: #9ca3af;
-  cursor: not-allowed;
+.topActions {
+  display: flex;
+  gap: 10px;
+}
+
+/* 🔙 botón secundario */
+.btnBack {
+  flex: 1;
+  background: #d1d5db; /* gris */
+  color: #111;
+  border: none;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 15px;
+}
+
+/* ✅ acción principal */
+.btnPrimary {
+  flex: 1;
+  background: #16a34a; /* verde */
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
 }
