@@ -1,5 +1,9 @@
 import { Router } from "express";
-import { createVenta, getVentas } from "../controllers/ventaController.js";
+import { 
+  createVenta, 
+  getVentas,
+  getVentaById // 👈 IMPORTANTE
+} from "../controllers/ventaController.js";
 
 import { authMiddleware } from "../middleware/authMiddleware.js";
 import { authorizeRoles } from "../middleware/roleMiddleware.js";
@@ -27,6 +31,17 @@ router.get(
   injectNegocio,
   authorizeRoles("dueno", "empleado"),
   getVentas
+);
+
+/* =========================
+   OBTENER UNA VENTA 🔥
+========================= */
+router.get(
+  "/:id", // 👈 AQUÍ VA
+  authMiddleware,
+  injectNegocio,
+  authorizeRoles("dueno", "empleado"),
+  getVentaById
 );
 
 export default router;

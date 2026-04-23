@@ -2,6 +2,7 @@ import Venta from "../models/Venta.js";
 import DetalleVenta from "../models/DetalleVenta.js";
 import Product from "../models/Product.js";
 import Cliente from "../models/Cliente.js";
+import Pago from "../models/Pago.js";
 
 /* =========================
    CREAR VENTA
@@ -148,6 +149,35 @@ export const getVentas = async (req, res) => {
 
   } catch (error) {
     console.error("🔥 Error getVentas:", error);
+    res.status(500).json({ message: "Error" });
+  }
+};
+
+export const getVentaById = async (req, res) => {
+  try {
+    const venta = await Venta.findOne({
+      where: {
+        id: req.params.id,
+        negocio_id: req.negocio_id,
+      },
+      include: [
+        { model: Cliente },
+        { model: Pago },
+        {
+          model: DetalleVenta,
+          include: [Product],
+        },
+      ],
+    });
+
+    if (!venta) {
+      return res.status(404).json({ message: "Venta no encontrada" });
+    }
+
+    res.json(venta);
+
+  } catch (error) {
+    console.error(error);
     res.status(500).json({ message: "Error" });
   }
 };

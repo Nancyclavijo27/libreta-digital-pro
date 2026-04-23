@@ -1,0 +1,155 @@
+/* contenedor */
+.container {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* 🔙 volver (gris como toda tu app) */
+.btnBack {
+  align-self: flex-start;
+  background: #d1d5db;
+  color: #111;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* 🔵 título bonito (como mockup) */
+.title {
+  font-size: 22px;
+  font-weight: bold;
+  color: #2563eb; /* 🔥 azul bonito */
+}
+
+/* tarjeta info */
+.card {
+  background: white;
+  padding: 14px;
+  border-radius: 14px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* labels */
+.label {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+/* valores */
+.value {
+  font-size: 16px;
+  font-weight: 600;
+  color: #111;
+}
+
+/* total destacado */
+.total {
+  font-size: 18px;
+  font-weight: bold;
+  color: #16a34a;
+}
+
+/* input */
+.input {
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  font-size: 15px;
+}
+
+/* botón principal */
+.btnGuardar {
+  background: #16a34a;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* disabled */
+.btnGuardar:disabled {
+  background: #9ca3af;
+}
+
+/* 🔵 HEADER AZUL */
+.header {
+  background: #2563eb;
+  color: white;
+
+  padding: 16px;
+  border-radius: 16px; /* 🔥 esquinas redondeadas */
+
+  display: flex;
+  justify-content: center; /* 🔥 centra horizontal */
+  align-items: center;
+}
+
+/* 🎯 TEXTO CENTRADO */
+.headerTitle {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* 🔴 saldo */
+.saldo {
+  font-size: 18px;
+  font-weight: bold;
+  color: #dc2626;
+}
+
+/* ✅ pagado */
+.pagado {
+  color: #16a34a;
+  font-weight: bold;
+  margin-top: 6px;
+}
+
+/* 🔥 fila horizontal */
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+/* cada bloque */
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+/* textos */
+.label {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.value {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.total {
+  font-size: 16px;
+  font-weight: bold;
+  color: #16a34a;
+}
+
+.saldo {
+  font-size: 16px;
+  font-weight: bold;
+  color: #dc2626;
+}
