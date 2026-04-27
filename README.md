@@ -1,144 +1,83 @@
-# 🚀 GeoApp - Real Time Geolocation Tracking
+# 🛒 Libreta Digital Pro
 
-Aplicación web full-stack para monitoreo de ubicación en tiempo real usando WebSockets (Socket.IO).
-
----
-
-## 🌐 Live Demo
-
-Frontend:
-https://geoapp-nancy-frontend.onrender.com
-
-Backend API:
-https://geoapp-nancy.onrender.com
+Sistema digital para el control de inventario, productos y entradas, diseñado especialmente para **abastos, tiendas de barrio y negocios pequeños**.
 
 ---
 
-## 🧠 Descripción
+## 💡 ¿Qué problema soluciona?
 
-GeoApp es una aplicación de seguimiento en tiempo real que:
+Muchos negocios aún manejan sus productos en cuadernos o de memoria, lo que genera:
 
-- 📍 Recibe coordenadas vía Socket.IO
-- 💾 Guarda puntos en base de datos
-- 🔁 Emite actualizaciones en vivo al frontend
-- 🔐 Incluye autenticación con JWT
-- 🗺️ Muestra posiciones en mapa con Leaflet
+* ❌ Pérdida de productos
+* ❌ Desorden en el inventario
+* ❌ Dificultad para saber cuánto hay disponible
+* ❌ Errores en precios y control
 
----
-
-## 🛠️ Tecnologías Utilizadas
-
-### Frontend
-- React
-- React Router
-- Leaflet
-- Socket.IO Client
-- Axios
-
-### Backend
-- Node.js
-- Express
-- Socket.IO
-- Sequelize
-- PostgreSQL
-- JWT Authentication
-
-### Deploy
-- Render (Backend + Frontend)
-- Supabase (Base de datos)
+👉 **Libreta Digital Pro** reemplaza eso por una herramienta simple y rápida.
 
 ---
 
-## ⚙️ Arquitectura
+## 🚀 ¿Qué puedes hacer con la app?
 
-Frontend (React)  
-⬇  
-Backend (Express + Socket.IO)  
-⬇  
-PostgreSQL (Supabase)
-
-Comunicación en tiempo real usando WebSockets.
-
----
-
-## 🔐 Autenticación
-
-- Registro de usuarios
-- Login con JWT
-- Middleware de autorización
-- Protección de rutas
+* 📦 Ver todo tu inventario en segundos
+* ➕ Registrar entrada de productos fácilmente
+* 🔍 Buscar productos rápidamente
+* 📊 Saber cuánto stock tienes en tiempo real
+* 💰 Ver precios organizados
+* 👤 Acceso con usuario y contraseña
 
 ---
 
-## 📦 Instalación Local
+## 📱 Diseñada para uso real
 
-### 1️⃣ Clonar repositorio
-
-```bash
-git clone https://github.com/Nancyclavijo27/geoapp-nancy.git
-cd geoapp-nancy
-```
-
-### 2️⃣ Backend
-
-```bash
-cd backend
-npm install
-npm start
-```
-
-### 3️⃣ Frontend
-
-```bash
-cd frontend
-npm install
-npm start
-```
+* Funciona como una app móvil
+* Interfaz simple (pensada para cualquier persona)
+* No necesitas conocimientos técnicos
+* Ideal para usar en el negocio día a día
 
 ---
 
-## 🌎 Variables de entorno
+## 🎯 ¿Para quién es?
 
-Backend:
-
-```
-DB_HOST=
-DB_USER=
-DB_PASSWORD=
-DB_NAME=
-JWT_SECRET=
-```
+* 🥕 Abastos
+* 🛒 Tiendas de barrio
+* 🍍 Fruver
+* 📦 Pequeños distribuidores
 
 ---
 
-## 📌 Estado del Proyecto
+## 🛠️ Tecnología
 
-Proyecto funcional con:
-
-✅ Autenticación  
-✅ WebSockets en producción  
-✅ Base de datos en la nube  
-✅ Deploy completo  
+* React (Frontend)
+* Node.js + Express (Backend)
+* Base de datos (PostgreSQL)
 
 ---
 
-## 👩‍💻 Autora
+## 📊 Estado del sistema
 
-Nancy Clavijo  
-Full Stack Developer  
-
-LinkedIn: https://www.linkedin.com/in/nancy-clavijo-varela-29353117a/ 
-GitHub: https://github.com/Nancyclavijo27
+Sistema funcional en uso y en mejora continua.
 
 ---
 
-## 🎯 Objetivo Profesional
+## 🔮 Próximas mejoras
 
-Proyecto desarrollado como parte de mi transición profesional al desarrollo Full Stack, demostrando implementación real de:
-
-- WebSockets
-- Autenticación segura
-- Deploy en producción
-- Arquitectura cliente-servidor
+* 📊 Módulo de ventas
+* 📈 Reportes automáticos
+* 🖼️ Imágenes de productos
+* 📱 Mejoras visuales tipo app
 
 ---
+
+## 📞 Contacto
+
+Si deseas usar o probar la aplicación:
+
+**Nancy Clavijo**
+📧 [clavijovarela@gmail.com](mailto:clavijovarela@gmail.com)
+
+---
+
+## 💬 Nota
+
+Este sistema está diseñado con enfoque práctico, pensando en negocios reales y necesidades del día a día.
