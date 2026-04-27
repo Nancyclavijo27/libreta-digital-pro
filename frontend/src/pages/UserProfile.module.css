@@ -1,37 +1,50 @@
 .page {
-  padding: 10px;
+  background: #f5f6f8;
+  min-height: 100vh;
+  padding: 20px;
 }
 
 .card {
   background: white;
-  border-radius: 16px;
+  border-radius: 20px;
   padding: 20px;
-
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-}
-
-.card h2 {
   text-align: center;
-  margin-bottom: 15px;
 }
 
-.card p {
-  font-size: 15px;
-  margin: 10px 0;
+/* 👤 avatar */
+.avatar {
+  font-size: 60px;
+  margin-bottom: 10px;
+}
+
+.nombre {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.username {
+  color: gray;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.rol {
+  background: #e8f5e9;
+  color: #16a34a;
+  padding: 4px 10px;
+  border-radius: 10px;
+  font-size: 12px;
+  display: inline-block;
+  margin-bottom: 20px;
 }
 
 .logout {
-  margin-top: 15px;
-
+  width: 100%;
   background: #ef4444;
   color: white;
   border: none;
-  border-radius: 10px;
-
-  padding: 10px 16px; /* 👈 más pequeño */
-  font-size: 14px;
-
+  padding: 12px;
+  border-radius: 12px;
   cursor: pointer;
-
-  align-self: center; /* 👈 lo centra */
+  font-weight: bold;
 }

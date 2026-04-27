@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import BuscadorProducto from "../components/inventario/BuscadorProducto";
 import ListaInventario from "../components/inventario/ListaInventario";
+import styles from "./Inventario.module.css";
 
 const Inventario = () => {
   const navigate = useNavigate();
@@ -17,36 +18,45 @@ const Inventario = () => {
   if (loading) return <p>Cargando...</p>;
 
   return (
-    <div style={{ padding: "20px" }}>
+    <div className={styles.container}>
 
-      {/* 🔙 volver */}
-      <button onClick={() => navigate("/home")}>
-        ← Volver
-      </button>
+  <div >
+    <button
+      className={styles.btnBack}
+      onClick={() => navigate("/home")}
+    >
+      ← Volver
+    </button>
+  </div>
 
-      <h2>📦 Inventario</h2>
+  <div className={styles.actions}>
+    <button
+      className={styles.button}
+      onClick={() => navigate("/crear-producto")}
+    >
+      + Crear Producto
+    </button>
 
-      {/* 🔹 ACCIONES PRINCIPALES */}
-      <div style={{ marginBottom: "20px" }}>
-        <button onClick={() => navigate("/crear-producto")}>
-          + Crear Producto
-        </button>
+    <button
+      className={styles.button}
+      onClick={() => navigate("/entrada")}
+    >
+      + Entrada Producto
+    </button>
+  </div>
 
-        <button onClick={() => navigate("/entrada")}>
-          + Registrar Entrada
-        </button>
-      </div>
+  <div className={styles.search}>
+    <BuscadorProducto
+      busqueda={busqueda}
+      setBusqueda={setBusqueda}
+    />
+  </div>
 
-      {/* 🔍 buscador */}
-      <BuscadorProducto
-        busqueda={busqueda}
-        setBusqueda={setBusqueda}
-      />
+  <div className={styles.lista}>
+    <ListaInventario productos={productos} />
+  </div>
 
-      {/* 📦 lista */}
-      <ListaInventario productos={productos} />
-
-    </div>
+</div>
   );
 };
 

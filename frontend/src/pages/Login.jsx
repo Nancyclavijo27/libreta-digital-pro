@@ -55,13 +55,13 @@ export default function Login() {
         {error && <p>{error}</p>}
 
         <div className={styles.inputBox}>
-          <span className={styles.icon}>📧</span>
+          <span className={styles.icon}>👤</span>
           <input
-            type="text"
-            placeholder="Email"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
+  type="text"
+  placeholder="Usuario"   // 🔥 aquí el cambio
+  value={username}
+  onChange={(e) => setUsername(e.target.value)}
+/>
         </div>
 
         <div className={styles.inputBox}>

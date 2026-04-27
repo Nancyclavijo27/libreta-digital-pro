@@ -7,15 +7,25 @@ export default function Profile() {
 
   const user = JSON.parse(localStorage.getItem("user"));
 
-  return (
+ return (
     <main className={styles.page}>
       <div className={styles.card}>
-        <h2>Perfil</h2>
+
+        <div className={styles.avatar}>👤</div>
 
         {user ? (
           <>
-            <p><strong>Nombre:</strong> {user.nombre}</p>
-            <p><strong>Usuario:</strong> {user.username}</p>
+            <div className={styles.nombre}>
+              {user.nombre}
+            </div>
+
+            <div className={styles.username}>
+              @{user.username}
+            </div>
+
+            <div className={styles.rol}>
+              {user.rol}
+            </div>
           </>
         ) : (
           <p>No hay información</p>
@@ -30,6 +40,7 @@ export default function Profile() {
         >
           Cerrar sesión
         </button>
+
       </div>
     </main>
   );

@@ -1,4 +1,5 @@
 import ItemProducto from "./ItemProducto";
+import styles from "./ListaInventario.module.css";
 
 const ListaInventario = ({ productos }) => {
   if (productos.length === 0) {
@@ -6,7 +7,7 @@ const ListaInventario = ({ productos }) => {
   }
 
   return (
-    <div>
+    <div  className={styles.container}>
       {productos.map((p) => (
         <ItemProducto key={p.id} producto={p} />
       ))}

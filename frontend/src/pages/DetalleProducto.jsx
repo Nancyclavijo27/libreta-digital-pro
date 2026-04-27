@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useProductoDetalle } from "../hooks/useProductoDetalle";
+import styles from "./DetalleProducto.module.css";
 
 const DetalleProducto = () => {
   const navigate = useNavigate();
@@ -8,34 +9,70 @@ const DetalleProducto = () => {
   if (loading) return <p>Cargando...</p>;
   if (!producto) return <p>Producto no encontrado</p>;
 
+  const getEmoji = (nombre) => {
+    const n = nombre.toLowerCase();
+    if (n.includes("zanahoria")) return "🥕";
+    if (n.includes("papa")) return "🥔";
+    if (n.includes("piña")) return "🍍";
+    if (n.includes("cebolla")) return "🧅";
+    return "📦";
+  };
+
   return (
-    <div style={{ padding: "20px" }}>
-      {/* 🔙 volver */}
-      <button onClick={() => navigate("/inventario")}>
+    <div className={styles.container}>
+
+      <button
+        onClick={() => navigate("/inventario")}
+        className={styles.btnBack}
+      >
         ← Volver
       </button>
 
-      <h2>Detalle del Producto</h2>
+      {/* 🔥 HEADER EN DOS COLUMNAS */}
+      <div className={styles.header}>
 
-      {/* 📦 INFO */}
-      <div style={{ marginBottom: "20px" }}>
-        <p><strong>Nombre:</strong> {producto.nombre}</p>
-        <p><strong>Unidad:</strong> {producto.unidad}</p>
-        <p><strong>Precio base:</strong> ${producto.precio_base}</p>
-        <p><strong>Stock actual:</strong> {producto.stock}</p>
+  {/* IZQUIERDA + CENTRO */}
+  <div className={styles.left}>
+    <div className={styles.image}>
+      {getEmoji(producto.nombre)}
+    </div>
+
+    <div className={styles.info}>
+      <div className={styles.nombre}>
+        {producto.nombre}
       </div>
 
-      {/* ➕ ACCIONES */}
+      <div className={styles.unidad}>
+        {producto.unidad}
+      </div>
+    </div>
+  </div>
+
+  {/* DERECHA */}
+  <div className={styles.right}>
+    <div className={styles.precio}>
+      ${producto.precio_base}
+    </div>
+  </div>
+
+</div>
+
+      {/* 📦 STOCK */}
+      <div className={styles.stockBox}>
+        <p>Stock Actual</p>
+        <p className={styles.stock}>
+          {producto.stock}
+        </p>
+      </div>
+
+      {/* 🔘 BOTÓN */}
       <button
+        className={styles.button}
         onClick={() => navigate("/entrada")}
-        style={{ marginBottom: "20px" }}
       >
-        + Registrar Entrada
+        Ajustar Stock
       </button>
 
-      {/* 🧾 FUTURO */}
-      <h3>Historial de movimientos</h3>
-      <p>Aquí luego verás entradas y salidas 🔥</p>
     </div>
   );
 };

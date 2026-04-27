@@ -1,0 +1,53 @@
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.icon {
+  font-size: 30px;
+}
+
+.text {
+  display: flex;
+  align-items: center; /* 🔥 esto es clave */
+  gap: 10px;           /* espacio entre nombre y stock */
+}
+
+.nombre {
+  font-weight: 600;
+}
+
+.stock {
+  font-size: 14px;
+  font-weight: 600;
+  background: #e8f5e9;
+  color: #16a34a;
+  padding: 4px 8px;
+  border-radius: 8px;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.precio {
+  font-weight: bold;
+  color: #16a34a;
+}
+
+.arrow {
+  color: #9ca3af;
+  font-size: 18px;
+}
