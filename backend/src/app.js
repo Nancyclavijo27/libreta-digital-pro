@@ -52,8 +52,6 @@ app.use(
   })
 );
 
-// IMPORTANTE para preflight requests
-app.options("*", cors());
 
 /* ======================
    MIDDLEWARE
