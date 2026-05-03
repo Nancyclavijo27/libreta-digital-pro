@@ -63,6 +63,12 @@ export const useVentas = () => {
   const cambiarCantidad = (id, valor) => {
   setItems(items.map(i => {
     if (i.producto_id === id) {
+
+      // 👇 permitir vacío
+      if (valor === "") {
+        return { ...i, cantidad: "" };
+      }
+
       const nuevaCantidad = Number(valor);
 
       return {

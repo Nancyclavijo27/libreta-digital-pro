@@ -39,11 +39,11 @@ const ListaProductos = ({ items = [], cambiarCantidad, eliminarProducto }) => {
             {/* CONTADOR */}
             <div className={styles.controles}>
   <input
-    type="tel"
-    value={item.cantidad}
-    onChange={(e) =>
-      cambiarCantidad(item.producto_id, Number(e.target.value))
-    }
+  type="tel"
+  value={item.cantidad}
+  onChange={(e) =>
+    cambiarCantidad(item.producto_id, e.target.value)
+  }
     className={styles.inputCantidad}
   />
 </div>
