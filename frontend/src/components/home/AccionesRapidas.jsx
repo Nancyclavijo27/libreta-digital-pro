@@ -28,7 +28,7 @@ const AccionesRapidas = () => {
         onClick={() => navigate("/deudas")}
       >
         🚚
-        <span>Ver Deudas</span>
+        <span>Deudas</span>
       </button>
 
       <button
