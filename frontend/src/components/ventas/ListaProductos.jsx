@@ -38,24 +38,15 @@ const ListaProductos = ({ items = [], cambiarCantidad, eliminarProducto }) => {
 
             {/* CONTADOR */}
             <div className={styles.controles}>
-              <button
-                className={styles.btn}
-                onClick={() => cambiarCantidad(item.producto_id, -1)}
-              >
-                −
-              </button>
-
-              <span className={styles.cantidad}>
-                {item.cantidad}
-              </span>
-
-              <button
-                className={styles.btn}
-                onClick={() => cambiarCantidad(item.producto_id, 1)}
-              >
-                +
-              </button>
-            </div>
+  <input
+    type="tel"
+    value={item.cantidad}
+    onChange={(e) =>
+      cambiarCantidad(item.producto_id, Number(e.target.value))
+    }
+    className={styles.inputCantidad}
+  />
+</div>
 
             {/* TOTAL */}
             <div className={styles.total}>

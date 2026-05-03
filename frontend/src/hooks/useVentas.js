@@ -60,19 +60,19 @@ export const useVentas = () => {
   };
 
   // 🔥 CAMBIAR CANTIDAD
-  const cambiarCantidad = (id, delta) => {
-    setItems(items.map(i => {
-      if (i.producto_id === id) {
-        const nuevaCantidad = i.cantidad + delta;
-        return {
-          ...i,
-          cantidad: nuevaCantidad < 1 ? 1 : nuevaCantidad
-        };
-      }
-      return i;
-    }));
-  };
+  const cambiarCantidad = (id, valor) => {
+  setItems(items.map(i => {
+    if (i.producto_id === id) {
+      const nuevaCantidad = Number(valor);
 
+      return {
+        ...i,
+        cantidad: nuevaCantidad > 0 ? nuevaCantidad : 1
+      };
+    }
+    return i;
+  }));
+};
   // 🔥 ELIMINAR PRODUCTO (opcional pero pro)
   const eliminarProducto = (id) => {
     setItems(items.filter(i => i.producto_id !== id));

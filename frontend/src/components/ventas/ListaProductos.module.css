@@ -88,3 +88,12 @@
   text-align: center;
   color: #9ca3af;
 }
+
+.inputCantidad {
+  width: 60px;
+  padding: 6px;
+  text-align: center;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
