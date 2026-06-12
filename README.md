@@ -1,83 +1,141 @@
 # 🛒 Libreta Digital Pro
 
-Sistema digital para el control de inventario, productos y entradas, diseñado especialmente para **abastos, tiendas de barrio y negocios pequeños**.
+Sistema digital para la gestión de inventarios, productos y control operativo, desarrollado para pequeños negocios, tiendas de barrio, abastos y distribuidores.
 
 ---
+
+## 🌐 Demo
+
+Aplicación en producción:
+
+Frontend: https://libreta-digital-pro-frontend.onrender.com
+
+> ⚠️ La demo utiliza servicios gratuitos y puede requerir algunos segundos para iniciar.
+
+---
+
+<img width="300" height="600" alt="image" src="https://github.com/user-attachments/assets/f0d8db62-8acb-4d3f-b5c9-45371b805da4" />
+
 
 ## 💡 ¿Qué problema soluciona?
 
-Muchos negocios aún manejan sus productos en cuadernos o de memoria, lo que genera:
+Muchos pequeños negocios aún gestionan sus productos mediante cuadernos, hojas de cálculo o registros manuales, lo que puede generar:
 
-* ❌ Pérdida de productos
-* ❌ Desorden en el inventario
-* ❌ Dificultad para saber cuánto hay disponible
-* ❌ Errores en precios y control
+* ❌ Pérdida de información.
+* ❌ Errores en inventarios.
+* ❌ Dificultad para consultar existencias.
+* ❌ Desorganización en precios y registros.
+* ❌ Procesos lentos y repetitivos.
 
-👉 **Libreta Digital Pro** reemplaza eso por una herramienta simple y rápida.
-
----
-
-## 🚀 ¿Qué puedes hacer con la app?
-
-* 📦 Ver todo tu inventario en segundos
-* ➕ Registrar entrada de productos fácilmente
-* 🔍 Buscar productos rápidamente
-* 📊 Saber cuánto stock tienes en tiempo real
-* 💰 Ver precios organizados
-* 👤 Acceso con usuario y contraseña
+Libreta Digital Pro busca simplificar estas tareas mediante una solución digital práctica y fácil de usar.
 
 ---
 
-## 📱 Diseñada para uso real
+## 🚀 Funcionalidades
 
-* Funciona como una app móvil
-* Interfaz simple (pensada para cualquier persona)
-* No necesitas conocimientos técnicos
-* Ideal para usar en el negocio día a día
-
----
-
-## 🎯 ¿Para quién es?
-
-* 🥕 Abastos
-* 🛒 Tiendas de barrio
-* 🍍 Fruver
-* 📦 Pequeños distribuidores
+* 📦 Gestión de productos.
+* ➕ Registro y actualización de inventario.
+* 🔍 Búsqueda rápida de productos.
+* 📊 Consulta de existencias.
+* 💰 Organización de precios.
+* 👤 Acceso mediante usuario y contraseña.
+* 🔄 Operaciones CRUD completas.
+* 📱 Interfaz sencilla orientada a usuarios no técnicos.
 
 ---
 
-## 🛠️ Tecnología
+## 🎯 ¿Para quién está diseñado?
 
-* React (Frontend)
-* Node.js + Express (Backend)
-* Base de datos (PostgreSQL)
-
----
-
-## 📊 Estado del sistema
-
-Sistema funcional en uso y en mejora continua.
+* 🛒 Tiendas de barrio.
+* 🥕 Abastos.
+* 🍍 Fruver.
+* 📦 Pequeños distribuidores.
+* 🏪 Negocios familiares.
 
 ---
 
-## 🔮 Próximas mejoras
+## 🛠️ Tecnologías Utilizadas
 
-* 📊 Módulo de ventas
-* 📈 Reportes automáticos
-* 🖼️ Imágenes de productos
-* 📱 Mejoras visuales tipo app
+### Frontend
+
+* React
+* JavaScript
+* CSS
+
+### Backend
+
+* Node.js
+* Express
+
+### Base de Datos
+
+* PostgreSQL
+
+### Despliegue
+
+* Render
+* Supabase
 
 ---
 
-## 📞 Contacto
+## ⚙️ Arquitectura
 
-Si deseas usar o probar la aplicación:
+Frontend (React)
 
-**Nancy Clavijo**
-📧 [clavijovarela@gmail.com](mailto:clavijovarela@gmail.com)
+⬇
+
+Backend (Node.js + Express)
+
+⬇
+
+PostgreSQL (Supabase)
 
 ---
 
-## 💬 Nota
+## 🔐 Seguridad
 
-Este sistema está diseñado con enfoque práctico, pensando en negocios reales y necesidades del día a día.
+* Inicio de sesión de usuarios.
+* Protección de rutas.
+* Gestión de autenticación.
+
+---
+
+## 📊 Estado del Proyecto
+
+✅ Proyecto funcional.
+
+✅ Desplegado en la nube.
+
+✅ En uso como solución digital de gestión operativa.
+
+---
+
+## 🔮 Próximas Mejoras
+
+* 📈 Reportes automáticos.
+* 📊 Dashboard de indicadores.
+* 🖼️ Imágenes de productos.
+* 💰 Módulo de ventas.
+* 📱 Mejoras de experiencia de usuario.
+
+---
+
+## 👩‍💻 Autora
+
+Nancy Clavijo Varela
+
+Full Stack Developer
+
+GitHub:
+https://github.com/Nancyclavijo27
+
+LinkedIn:
+https://www.linkedin.com/in/nancy-clavijo-varela-29353117a/
+
+---
+
+## 🎯 Objetivo Profesional
+
+Proyecto desarrollado como parte de mi iniciativa de desarrollo web freelance, enfocado en la creación de soluciones digitales para pequeños negocios y procesos operativos reales.
+
+Permite aplicar conocimientos de React, Node.js, PostgreSQL y arquitectura Full Stack en escenarios prácticos de gestión y organización de información.
