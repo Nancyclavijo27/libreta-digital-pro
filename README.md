@@ -8,7 +8,7 @@ Sistema digital para la gestión de inventarios, productos y control operativo, 
 
 Aplicación en producción:
 
-Frontend: libreta-digital-pro.vercel.app
+Frontend: https://libreta-digital-pro.vercel.app
 
 > ⚠️ La demo utiliza servicios gratuitos y puede requerir algunos segundos para iniciar.
 
