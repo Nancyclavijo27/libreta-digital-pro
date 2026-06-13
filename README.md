@@ -12,6 +12,11 @@ Frontend: https://libreta-digital-pro.vercel.app
 
 > ⚠️ La demo utiliza servicios gratuitos y puede requerir algunos segundos para iniciar.
 
+ ### Usuario de prueba
+
+Usuario: carlos
+Contraseña: 123456
+
 ---
 
 <img width="300" height="600" alt="image" src="https://github.com/user-attachments/assets/f0d8db62-8acb-4d3f-b5c9-45371b805da4" />
